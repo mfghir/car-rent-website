@@ -1,7 +1,6 @@
 import { ArrangeVertical, ArrowDown2 } from "iconsax-react";
 import React from "react";
 import SelectOpt from "../common/SelectOpt";
-// import Datepicker from "flowbite-datepicker/Datepicker";
 
 const DatePicker = () => {
   return (
@@ -10,7 +9,7 @@ const DatePicker = () => {
       <section>
         <div className="flex items-center mb-4">
           <input
-            checked
+            defaultChecked
             id="default-radio-1"
             type="radio"
             value=""
@@ -18,7 +17,7 @@ const DatePicker = () => {
             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600"
           />
           <label
-            for="default-radio-1"
+            htmlFor="default-radio-1"
             className="ml-2 text-base font-semibold text-[#1A202C]"
           >
             Pick-Up
@@ -45,7 +44,6 @@ const DatePicker = () => {
               Date
             </span>
             <input
-              datepicker
               type="date"
               className="w-full  block focus:outline-none py-2  border-[#C3D4E966] text-[#90A3BF] text-xs"
               placeholder="21 July 2022"
@@ -82,7 +80,7 @@ const DatePicker = () => {
             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600"
           />
           <label
-            for="default-radio-1"
+            htmlFor="default-radio-1"
             className="ml-2 text-base font-semibold text-[#1A202C]"
           >
             Drop-Off
@@ -109,7 +107,6 @@ const DatePicker = () => {
               Date
             </span>
             <input
-              datepicker
               type="date"
               className="w-full  block focus:outline-none py-2  border-[#C3D4E966] text-[#90A3BF] text-xs"
               placeholder="21 July 2022"
