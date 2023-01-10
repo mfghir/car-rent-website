@@ -1,6 +1,6 @@
 import img from "../assets/img";
 
-export const PopularCarData = [
+export const popularCarData = [
   {
     id: 1,
     name: "Koenigsegg",

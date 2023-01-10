@@ -1,3 +1,4 @@
+// import { Slider } from "iconsax-react";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Ads from "./components/Ads";
@@ -13,6 +14,9 @@ const App = () => {
       <DatePicker />
 
       <ProductList />
+
+
+
 
       <Routes>
         {/* <Route path="/view"  element={} /> */}
