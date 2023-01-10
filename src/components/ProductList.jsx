@@ -12,7 +12,6 @@ const ProductList = () => {
 
   return (
     <div className="mt-8 px-6 lg:px-16 ">
-
       {/* ------------------------------- Popular Car */}
       <div className="flex justify-between items-center mb-5 lg:mb-[30px]">
         <p className="text-[#90A3BF] text-sm font-semibold">Popular Car</p>
@@ -23,14 +22,18 @@ const ProductList = () => {
       <Slider data={popCardata} />
 
       {/* --------------------------- Recomendation Car */}
+
       <p className="text-[#90A3BF] text-sm font-semibold mt-8">
         Recomendation Car
       </p>
-      <section className="flex justify-between items-center flex-wrap  ">
+      <section className="grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4 ">
         {recCardata.map((item) => (
           <RecommandCar item={item} key={item.id} />
         ))}
       </section>
+      <button className="bg-[#3563E9]  rounded-[4px] text-white text-xs lg:text-base font-semibold px-4 py-[10px] mx-auto">
+        Rental Now
+      </button>
     </div>
   );
 };
