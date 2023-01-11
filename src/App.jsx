@@ -1,26 +1,22 @@
-// import { Slider } from "iconsax-react";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Ads from "./components/Ads";
-import DatePicker from "./components/DatePicker";
-import Navbar from "./components/Navbar";
+
+import Home from "./components/Home";
+import Category from "./components/Category";
+import Footer from "./components/Footer";
+
 import ProductList from "./components/ProductList";
 
 const App = () => {
   return (
     <div className="bg-[#F6F7F9]">
-      <Navbar />
-      <Ads />
-      <DatePicker />
-
-      <ProductList />
-
-
-
 
       <Routes>
-        {/* <Route path="/view"  element={} /> */}
+        <Route path="/" element={<Home />} />
+        <Route path="/category" element={<Category />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 };

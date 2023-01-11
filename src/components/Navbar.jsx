@@ -6,31 +6,37 @@ import {
   Setting4,
 } from "iconsax-react";
 import React from "react";
+import { NavLink } from "react-router-dom";
 import img from "../assets/img";
 
 const Navbar = () => {
   return (
     <div className="flex justify-between items-center flex-wrap pt-8 px-6 md:flex-nowrap lg:py-10">
       <section className="flex justify-between items-center">
-        <h1 className="text-[#3563E9] text-2xl lg:text-[32px]">MORENT</h1>
+        <NavLink to="/">
+          <h1 className="text-[#3563E9] text-2xl lg:text-[32px]">MORENT</h1>
+        </NavLink>
 
         <form className="lg:w-96 md:w-80 h-12 lg:ml-16 md:ml-8 md:block hidden">
           <div className="relative flex justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <SearchNormal1 color="#596780" />
             </div>
+
             <input
               type="search"
               className="block w-full p-4 pl-10 text-sm text-[#596780] border border-[#C3D4E966] rounded-[70px]  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               placeholder="Search something here"
             />
-            <div className="absolute inset-y-0 right-0 flex items-center mr-3 pointer-events-none">
-              <Setting4 color="#596780" />
+
+            <div className="absolute inset-y-0 right-0 flex items-center mr-3 ">
+              <NavLink to="/category">
+                <Setting4 color="#596780" />
+              </NavLink>
             </div>
           </div>
         </form>
       </section>
-
 
       <div className="md:flex items-center hidden">
         <Heart color="#596780" variant="Bold" className="md:mr-5" />
@@ -67,9 +73,11 @@ const Navbar = () => {
         </div>
       </form>
 
-      <div className="md:hidden w-12 h-12 mt-8 border border-[#C3D4E966] rounded-[10px] flex justify-center items-center">
-        <Setting4 color="#596780" />
-      </div>
+      <NavLink to="/category">
+        <div className="bg-blue-300 md:hidden w-12 h-12 mt-8 border border-[#C3D4E966] rounded-[10px] flex justify-center items-center">
+          <Setting4 color="#596780" />
+        </div>
+      </NavLink>
       {/* </> */}
     </div>
   );

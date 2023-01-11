@@ -4,9 +4,9 @@ import SelectOpt from "../common/SelectOpt";
 
 const DatePicker = () => {
   return (
-    <div className="mt-8 px-6 lg:px-16 lg:flex lg:items-center">
+    <div className="mt-8 mx-6 lg:mx-0 lg:px-16 lg:flex lg:justify-between lg:items-center">
       {/* ------------------------------------- Pick-Up */}
-      <section>
+      <section className="bg-white rounded-[10px] p-4 lg:p-6">
         <div className="flex items-center mb-4">
           <input
             defaultChecked
@@ -65,12 +65,13 @@ const DatePicker = () => {
       </section>
 
       {/* ------------------------------------- Switch-btn */}
-      <div className="mx-auto w-[60px] h-[60px] bg-[#3563E9] rounded-[10px] flex justify-center items-center cursor-pointer">
+      {/* https://tailwindcss.com/docs/hover-focus-and-other-states#before-and-after */}
+      <div className="mx-auto lg:mx-[44px] w-[60px] h-[60px] bg-[#3563E9] rounded-[10px] flex justify-center items-center cursor-pointer">
         <ArrangeVertical color="#ffffff" />
       </div>
 
       {/* ------------------------------------- Drop-Off */}
-      <section>
+      <section className="bg-white rounded-[10px] p-4 lg:p-6">
         <div className="flex items-center mb-4">
           <input
             id="default-radio-1"

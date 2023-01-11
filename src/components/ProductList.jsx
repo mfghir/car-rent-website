@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "../common/Slider";
+
 import { popularCarData } from "../data/popularCarData";
 import { recommandCarData } from "../data/recommandCarData";
-import CarCart from "./PopularCar";
 import RecommandCar from "./RecommandCar";
 
 const ProductList = () => {
@@ -31,9 +31,15 @@ const ProductList = () => {
           <RecommandCar item={item} key={item.id} />
         ))}
       </section>
-      <button className="bg-[#3563E9]  rounded-[4px] text-white text-xs lg:text-base font-semibold px-4 py-[10px] mx-auto">
-        Rental Now
-      </button>
+
+      <div className="flex items-center mt-12 lg:mt-16">
+        <button className=" bg-[#3563E9] rounded-[4px] text-white text-xs lg:text-base font-semibold px-4 py-[10px] mx-auto">
+          Show More Car
+        </button>
+        <span className="text-sm font-bold lg:font-medium text-[#90A3BF]">
+          120 Car
+        </span>
+      </div>
     </div>
   );
 };

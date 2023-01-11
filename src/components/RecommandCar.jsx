@@ -86,10 +86,12 @@ const RecommandCar = ({ item }) => {
           ${item.price}.00/
           <span className="text-[#90A3BF] text-xs pl-1">day</span>
         </p>
+        
         <button className="bg-[#3563E9] rounded-[4px] text-white text-xs lg:text-base font-semibold px-4 py-[10px] lg:px-5">
           Rental Now
         </button>
       </div>
+
     </div>
   );
 };
