@@ -40,7 +40,15 @@ const Navbar = () => {
 
       <div className="md:flex items-center hidden">
         <Heart color="#596780" variant="Bold" className="md:mr-5" />
-        <Notification color="#596780" variant="Bold" className="md:mr-5" />
+
+        <div className="relative">
+          <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl bottom-6 left-5"></span>
+          <Notification
+            color="#596780"
+            variant="Bold"
+            className="md:mr-5 "
+          />
+        </div>
         <Setting2 color="#596780" variant="Bold" className="md:mr-5" />
 
         <img
@@ -50,7 +58,7 @@ const Navbar = () => {
         />
       </div>
 
-      {/* ----------------mobile------------------------- */}
+      
       <img
         className="w-7 h-7 md:hidden"
         src={img.Imageprofile}
@@ -73,8 +81,8 @@ const Navbar = () => {
         </div>
       </form>
 
-      <NavLink to="/category">
-        <div className="bg-blue-300 md:hidden w-12 h-12 mt-8 border border-[#C3D4E966] rounded-[10px] flex justify-center items-center">
+      <NavLink to="/category" className="md:hidden">
+        <div className="bg-blue-300 w-12 h-12 mt-8 border border-[#C3D4E966] rounded-[10px] flex justify-center items-center">
           <Setting4 color="#596780" />
         </div>
       </NavLink>

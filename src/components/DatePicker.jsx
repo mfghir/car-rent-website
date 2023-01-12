@@ -6,7 +6,7 @@ const DatePicker = () => {
   return (
     <div className="mt-8 mx-6 lg:mx-0 lg:px-16 lg:flex lg:justify-between lg:items-center">
       {/* ------------------------------------- Pick-Up */}
-      <section className="bg-white rounded-[10px] p-4 lg:p-6">
+      <section className="bg-white rounded-[10px] p-4 lg:p-6 lg:w-2/5">
         <div className="flex items-center mb-4">
           <input
             defaultChecked
@@ -65,13 +65,12 @@ const DatePicker = () => {
       </section>
 
       {/* ------------------------------------- Switch-btn */}
-      {/* https://tailwindcss.com/docs/hover-focus-and-other-states#before-and-after */}
-      <div className="mx-auto lg:mx-[44px] w-[60px] h-[60px] bg-[#3563E9] rounded-[10px] flex justify-center items-center cursor-pointer">
+      <div className=" lg:mx-[44px] w-[60px] h-[60px] mx-auto z-10 bg-[#3563E9] rounded-[10px] flex justify-center items-center cursor-pointer shadow-[#10329347] shadow-xl ">
         <ArrangeVertical color="#ffffff" />
       </div>
 
       {/* ------------------------------------- Drop-Off */}
-      <section className="bg-white rounded-[10px] p-4 lg:p-6">
+      <section className="bg-white rounded-[10px] p-4 lg:p-6 lg:w-2/5">
         <div className="flex items-center mb-4">
           <input
             id="default-radio-1"

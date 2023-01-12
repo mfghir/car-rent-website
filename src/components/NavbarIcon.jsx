@@ -44,7 +44,14 @@ const NavbarIcon = () => {
 
         <div className="md:flex items-center hidden">
           <Heart color="#596780" variant="Bold" className="md:mr-5" />
-          <Notification color="#596780" variant="Bold" className="md:mr-5" />
+          <div className="relative">
+          <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl bottom-6 left-5"></span>
+          <Notification
+            color="#596780"
+            variant="Bold"
+            className="md:mr-5 "
+          />
+        </div>
           <Setting2 color="#596780" variant="Bold" className="md:mr-5" />
 
           <img
@@ -56,9 +63,9 @@ const NavbarIcon = () => {
       </div>
 
       {/* ----------------mobile------------------------- */}
-      <div className="flex justify-between items-center flex-wrap py-8 px-6 bg-white md:hidden">
+      <div className="flex justify-between items-center flex-wrap py-8 px-6 bg-white md:hidden lg:hidden">
         <section className="md:hidden w-full flex justify-between mb-8">
-          <HambergerMenu size="24" color="#596780" className="cursor-pointer" />
+          <HambergerMenu size="24" color="#596780" className="cursor-pointer"  />
           <img className="w-7 h-7" src={img.Imageprofile} alt="Imageprofile" />
         </section>
 
@@ -83,8 +90,8 @@ const NavbarIcon = () => {
           </div>
         </form>
 
-        <NavLink to="/category">
-          <div className="bg-blue-300 md:hidden w-12 h-12 mt-8 border border-[#C3D4E966] rounded-[10px] flex justify-center items-center">
+        <NavLink to="/category" className='md:hidden'>
+          <div className="bg-blue-300  w-12 h-12 mt-8 border border-[#C3D4E966] rounded-[10px] flex justify-center items-center">
             <Setting4 color="#596780" />
           </div>
         </NavLink>
