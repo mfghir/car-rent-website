@@ -1,6 +1,5 @@
 import { ArrangeVertical, ArrowDown2 } from "iconsax-react";
 import React from "react";
-import SelectOpt from "../common/SelectOpt";
 
 const DatePicker = () => {
   return (

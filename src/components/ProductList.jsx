@@ -1,12 +1,23 @@
 import React, { useState } from "react";
+import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
+import { popularCarAPI } from "../api/service";
 import Slider from "../common/Slider";
 
 import { popularCarData } from "../data/popularCarData";
 import { recommandCarData } from "../data/recommandCarData";
 import RecommandCar from "./RecommandCar";
 
-const ProductList = () => {
+
+// const fetchPopCars = async () => {
+//   const res = await fetch(`https://quiet-ape-7.app.smartmock.io/popularCar`);
+//   return console.log(res.json());
+// };
+
+
+const ProductList = () => { 
+  // const {data ,error,isLoading  } = useQuery( 'popularCar', fetchPopCars )
+  // const [popCardata, setPopCarData] = useState(popularCarAPI);
   const [popCardata, setPopCarData] = useState(popularCarData);
   const [recCardata, setRecCarData] = useState(recommandCarData);
 

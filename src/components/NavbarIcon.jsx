@@ -6,14 +6,22 @@ import {
   Setting2,
   Setting4,
 } from "iconsax-react";
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import img from "../assets/img";
+import { ProductsContext } from "../context/ProductsProvider";
 
 const NavbarIcon = () => {
+  // const [isOpen, setIsOpen] = useState(false);
+  const [state, dispatch] = useContext(ProductsContext);
+  const isOpentHandler = () => {
+    dispatch({ type: "IS_OPEN" });
+    !state.isOpen == state.isOpen;
+  };
+
   return (
     <>
-      <div className="flex justify-between items-center flex-wrap md:pt-8 px-6 md:flex-nowrap lg:py-10 md:bg-white">
+      <div className="flex justify-between items-center flex-wrap md:pt-8 px-6 md:flex-nowrap lg:py-10 md:bg-white border-b border-[#C3D4E966]">
         <section className="flex justify-between items-center">
           <NavLink to="/">
             <h1 className="text-[#3563E9] text-2xl lg:text-[32px] hidden md:block">
@@ -45,13 +53,9 @@ const NavbarIcon = () => {
         <div className="md:flex items-center hidden">
           <Heart color="#596780" variant="Bold" className="md:mr-5" />
           <div className="relative">
-          <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl bottom-6 left-5"></span>
-          <Notification
-            color="#596780"
-            variant="Bold"
-            className="md:mr-5 "
-          />
-        </div>
+            <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl bottom-6 left-5"></span>
+            <Notification color="#596780" variant="Bold" className="md:mr-5 " />
+          </div>
           <Setting2 color="#596780" variant="Bold" className="md:mr-5" />
 
           <img
@@ -63,9 +67,15 @@ const NavbarIcon = () => {
       </div>
 
       {/* ----------------mobile------------------------- */}
-      <div className="flex justify-between items-center flex-wrap py-8 px-6 bg-white md:hidden lg:hidden">
+      <div className="flex justify-between items-center flex-wrap py-8 px-6 bg-white md:hidden lg:hidden border-b border-[#C3D4E966]">
         <section className="md:hidden w-full flex justify-between mb-8">
-          <HambergerMenu size="24" color="#596780" className="cursor-pointer"  />
+          <HambergerMenu
+            size="24"
+            color="#596780"
+            className="cursor-pointer"
+            
+            // onClick={() => console.log('first')}
+          />
           <img className="w-7 h-7" src={img.Imageprofile} alt="Imageprofile" />
         </section>
 
@@ -90,9 +100,9 @@ const NavbarIcon = () => {
           </div>
         </form>
 
-        <NavLink to="/category" className='md:hidden'>
-          <div className="bg-blue-300  w-12 h-12 mt-8 border border-[#C3D4E966] rounded-[10px] flex justify-center items-center">
-            <Setting4 color="#596780" />
+        <NavLink to="/category" className="md:hidden">
+          <div className="w-12 h-12 mt-8 border border-[#C3D4E966] rounded-[10px] flex justify-center items-center">
+            <Setting4 color="#596780" onClick={() => isOpentHandler()} />
           </div>
         </NavLink>
       </div>

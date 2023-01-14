@@ -11,7 +11,7 @@ import img from "../assets/img";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between items-center flex-wrap pt-8 px-6 md:flex-nowrap lg:py-10">
+    <div className="flex justify-between items-center flex-wrap pt-8 px-6 md:flex-nowrap lg:py-10 border-b border-[#C3D4E966]">
       <section className="flex justify-between items-center">
         <NavLink to="/">
           <h1 className="text-[#3563E9] text-2xl lg:text-[32px]">MORENT</h1>
