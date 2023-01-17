@@ -1,11 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import Home from "./components/Home";
+import Home from "./pages/Home";
 import Category from "./components/Category";
-import Footer from "./components/Footer";
+import Footer from "./pages/Footer";
 
 import ProductList from "./components/ProductList";
+import DetailCar from "./components/DetailCar";
 
 const App = () => {
   return (
@@ -14,6 +15,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/category" element={<Category />} />
+        <Route path="/detailCar" element={<DetailCar />} />
+        <Route path="/detailCar/:id" element={<DetailCar />} />
       </Routes>
 
       <Footer />

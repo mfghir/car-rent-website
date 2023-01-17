@@ -11,7 +11,7 @@ const SortCategory = () => {
 
   return (
     <div
-      className={`w-2/3 h-full fixed z-10 top-0 bg-white  transition-transform  md:translate-x-0 md:w-1/4 md:top-32 md:static md:h-full p-8
+      className={`w-2/3 h-full overflow-y-scroll fixed z-10 top-0 bg-white  transition-transform  md:translate-x-0 md:w-1/4 md:top-32 md:static md:h-full p-8
       ${
         state.isOpen
           ? " translate-x-0  transition-transform"
@@ -89,7 +89,7 @@ const SortCategory = () => {
             value="100"
             className="w-full h-2 bg-[#90A3BF] appearance-none rounded  cursor-pointer  focus:outline-none focus:ring-0 focus:shadow-none"
           /> */}
-          <input type="range" min="0" max="100" value="40" className="range range-xs range-[#3563E9] bg-[#90A3BF]" />
+          <input type="range" min="0" max="100" value="50" className="range range-xs range-accent range-[#3563E9] bg-[#90A3BF]" />
           <label
             htmlFor="default-range"
             className="block mt-4 text-xl font-semibold text-[#596780] "

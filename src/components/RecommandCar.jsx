@@ -1,8 +1,10 @@
 import { GasStation, Heart, Profile2User, Story } from "iconsax-react";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const RecommandCar = ({ item }) => {
   return (
+    <NavLink to={`/detailCar/${item.id}`}  >
     <div className="rounded-[10px] bg-white p-4 mt-5 ">
       <div className="flex justify-between items-center ">
         <p className="flex flex-col">
@@ -93,6 +95,7 @@ const RecommandCar = ({ item }) => {
       </div>
 
     </div>
+    </NavLink>
   );
 };
 

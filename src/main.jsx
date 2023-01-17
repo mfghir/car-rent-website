@@ -9,13 +9,13 @@ import ProductsProvider from "./context/ProductsProvider";
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <ProductsProvider>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+  <ProductsProvider>
+      <BrowserRouter>
         <React.StrictMode>
           <App />
         </React.StrictMode>
-      </QueryClientProvider>
-    </ProductsProvider>
-  </BrowserRouter>
+      </BrowserRouter>
+  </ProductsProvider>
+    </QueryClientProvider>
 );

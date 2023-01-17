@@ -14,10 +14,10 @@ export const reducer = (state, action) => {
   switch (action.type) {
     // case "IS_OPEN": {
     //   if (state.isOpen) {
-        
+
     //     state.isOpen(true)
     //   }
-      
+
     //   console.log(state.isOpen)
     //   return { ...state, isOpen };
     // }
@@ -182,8 +182,11 @@ export const reducer = (state, action) => {
     //   // return state;
     // }
 
-    // case "GET_DATA":
-    //   return { ...state, productsData: action.payload };
+    case "GET_POPULAR_CAR_DATA":
+      return { ...state, popularCar: action.payload };
+
+    case "GET_RCOMMANDED_CAR_DATA":
+      return { ...state, recommandedCar: action.payload };
 
     default:
       return state;

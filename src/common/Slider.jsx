@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 // import images from "./images";
 // import { PopularCarData } from "../data/popularCarData";
 import PopularCar from "../components/PopularCar";
+import { NavLink } from "react-router-dom";
 
 function Slider({data}) {
   const [width, setWidth] = useState(0);
@@ -25,14 +26,18 @@ function Slider({data}) {
           dragConstraints={{ right: 0, left: -width }}
           className="inner-carousel flex justify-between items-center flex-nowrap"
         >
-          {data.map((item) => {
+          {data?.map((item) => {
             return (
+    <NavLink to={`/detailCar/${item.id}`}  >
+
               <motion.div key={item.id} >
                 <PopularCar item={item} />
                </motion.div>
+          </NavLink>
             );
           })}
         </motion.div>
+        
       </motion.div>
     </>
   );

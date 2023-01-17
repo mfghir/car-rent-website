@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import { popularCarAPI } from "../api/service";
 import Slider from "../common/Slider";
+import { ProductsContext } from "../context/ProductsProvider";
 
 import { popularCarData } from "../data/popularCarData";
 import { recommandCarData } from "../data/recommandCarData";
@@ -18,8 +19,12 @@ import RecommandCar from "./RecommandCar";
 const ProductList = () => { 
   // const {data ,error,isLoading  } = useQuery( 'popularCar', fetchPopCars )
   // const [popCardata, setPopCarData] = useState(popularCarAPI);
-  const [popCardata, setPopCarData] = useState(popularCarData);
-  const [recCardata, setRecCarData] = useState(recommandCarData);
+
+  // const [popCardata, setPopCarData] = useState(popularCarData);
+  // const [recCardata, setRecCarData] = useState(recommandCarData);
+
+  const [state, dispatch] = useContext(ProductsContext);
+
 
   return (
     <div className="mt-8 px-6 lg:px-16 ">
@@ -30,15 +35,15 @@ const ProductList = () => {
           <p className="text-[#3563E9] text-xs font-semibold">View All</p>
         </Link>
       </div>
-      <Slider data={popCardata} />
+      <Slider data={state.popularCar} />
 
       {/* --------------------------- Recomendation Car */}
 
       <p className="text-[#90A3BF] text-sm font-semibold mt-8">
         Recomendation Car
       </p>
-      <section className="grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4 ">
-        {recCardata.map((item) => (
+      <section className="grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-8  ">
+        {state.recommandedCar.map((item) => (
           <RecommandCar item={item} key={item.id} />
         ))}
       </section>
