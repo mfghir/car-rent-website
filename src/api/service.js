@@ -1,7 +1,7 @@
 // import axios from "axios"
 
 // const popularCarAPI = async () =>{
-    
+
 // 		const res = await axios.get('https://quiet-ape-7.app.smartmock.io/');
 // 		return res.json();
 
@@ -26,28 +26,24 @@
 //     // })
 // }
 
-
 // export { popularCarAPI }
-
-
-
-
-
-
-
 
 import axios from "axios";
 
-const baseURL = 'https://carrent.app.smartmock.io'
-    
+const baseURL = "https://carrent.app.smartmock.io";
+
 async function popularCarAPI() {
-    const { data } = await axios.get(`${baseURL}/popularCar`)
-    return data
+  const { data } = await axios.get(`${baseURL}/popularCar`);
+  return data;
 }
 
 async function recommandedCarAPI() {
-    const { data } = await axios.get(`${baseURL}/recommandedCar`)
-    return data
+  const { data } = await axios.get(`${baseURL}/recommandedCar`);
+  return data;
 }
-    
-export { popularCarAPI ,recommandedCarAPI }
+async function carListAPI() {
+  const { data } = await axios.get(`${baseURL}/maincarlist`);
+  return data;
+}
+
+export { popularCarAPI, recommandedCarAPI,carListAPI };

@@ -1,11 +1,12 @@
 import React, { useReducer, createContext, useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import { popularCarAPI, recommandedCarAPI } from "../api/service";
+import { popularCarAPI, recommandedCarAPI,carListAPI } from "../api/service";
 import { reducer } from "./reducer";
 
 const initialState = {
   isOpen: false,
 
+  carList:[],
   recommandedCar: [],
   popularCar: [],
 
@@ -128,12 +129,14 @@ const ProductsProvider = ({ children }) => {
     const fetchApi = async () => {
       const resPop = await popularCarAPI();
       const resRec = await recommandedCarAPI();
+      const resCar = await carListAPI();
       // if(data){
       //   dispatch({ type: "GET_POPULAR_CAR_DATA", payload: data });
       // }
 
       dispatch({ type: "GET_POPULAR_CAR_DATA", payload: resPop });
       dispatch({ type: "GET_RCOMMANDED_CAR_DATA", payload: resRec });
+      dispatch({ type: "GET_CAR_DATA", payload: resCar });
     };
 
     fetchApi();

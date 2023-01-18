@@ -182,6 +182,9 @@ export const reducer = (state, action) => {
     //   // return state;
     // }
 
+    case "GET_CAR_DATA":
+      return { ...state, carList: action.payload };
+
     case "GET_POPULAR_CAR_DATA":
       return { ...state, popularCar: action.payload };
 

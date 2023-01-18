@@ -11,12 +11,12 @@ const Ads = () => {
         <img
           className="w-[48%] cursor-pointer"
           src="https://upcdn.io/kW15b2b/raw/Ads%201-48cm.png"
-          alt=".adsOne"
+          alt="adsOne"
         />
         <img
           className="w-[48%] cursor-pointer"
           src="https://upcdn.io/kW15b2b/raw/Ads%202-6fkp.png"
-          alt=".adsTwo"
+          alt="adsTwo"
         />
       </div>
     </>
