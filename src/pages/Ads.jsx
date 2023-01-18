@@ -1,22 +1,21 @@
 import React from "react";
-import img from "../assets/img";
 
 const Ads = () => {
   return (
     <>
       <div className="px-6 mt-8 flex justify-center items-center lg:hidden">
-        <img className="cursor-pointer" src={img.AdsMobile} alt="AdsMobile" />
+        <img className="cursor-pointer" src="https://upcdn.io/kW15b2b/raw/Adsads-2Xbx.png" alt="AdsMobile" />
       </div>
 
       <div className="hidden px-16 mt-8 lg:flex lg:justify-between lg:items-center">
         <img
           className="w-[48%] cursor-pointer"
-          src={img.adsOne}
+          src="https://upcdn.io/kW15b2b/raw/Ads%201-48cm.png"
           alt=".adsOne"
         />
         <img
           className="w-[48%] cursor-pointer"
-          src={img.adsTwo}
+          src="https://upcdn.io/kW15b2b/raw/Ads%202-6fkp.png"
           alt=".adsTwo"
         />
       </div>

@@ -7,7 +7,6 @@ import {
 } from "iconsax-react";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import img from "../assets/img";
 
 const Navbar = () => {
   return (
@@ -53,7 +52,7 @@ const Navbar = () => {
 
         <img
           className="md:w-11 md:h-11"
-          src={img.Imageprofile}
+          src="https://upcdn.io/kW15b2b/raw/Imageprofile-46DF.png"
           alt="Imageprofile"
         />
       </div>
@@ -61,7 +60,7 @@ const Navbar = () => {
       
       <img
         className="w-7 h-7 md:hidden"
-        src={img.Imageprofile}
+        src="https://upcdn.io/kW15b2b/raw/Imageprofile-46DF.png"
         alt="Imageprofile"
       />
 

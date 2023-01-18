@@ -23,7 +23,7 @@ const DetailCar = () => {
         <SortCategory />
 
         <div className="md:w-3/4">
-          {[filteredPop || filterRec].map((item) => (
+          {filteredPop.map((item) => (
             <div className=" bg-red-200 h-80">
               DetailCar
               <h1>{item.name}</h1>

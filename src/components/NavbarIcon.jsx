@@ -8,7 +8,6 @@ import {
 } from "iconsax-react";
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import img from "../assets/img";
 import { ProductsContext } from "../context/ProductsProvider";
 
 const NavbarIcon = () => {
@@ -60,7 +59,7 @@ const NavbarIcon = () => {
 
           <img
             className="md:w-11 md:h-11"
-            src={img.Imageprofile}
+            src="https://upcdn.io/kW15b2b/raw/Imageprofile-46DF.png"
             alt="Imageprofile"
           />
         </div>
@@ -73,10 +72,14 @@ const NavbarIcon = () => {
             size="24"
             color="#596780"
             className="cursor-pointer"
-            
+
             // onClick={() => console.log('first')}
           />
-          <img className="w-7 h-7" src={img.Imageprofile} alt="Imageprofile" />
+          <img
+            className="w-7 h-7"
+            src="https://upcdn.io/kW15b2b/raw/Imageprofile-46DF.png"
+            alt="Imageprofile"
+          />
         </section>
 
         <NavLink to="/">

@@ -1,8 +1,8 @@
 import React from "react";
-import Ads from "../components/Ads";
 import DatePicker from "../components/DatePicker";
 import Navbar from "../components/Navbar";
 import ProductList from "../components/ProductList";
+import Ads from "./Ads";
 
 const Home = () => {
   return (
