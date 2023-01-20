@@ -132,14 +132,63 @@ const DetailCar = () => {
                 </section>
 
                 <section className="mt-8 bg-white p-4 rounded-[10px]">
-                  <div className="flex justify-between items-center">
+                  <div className="w-[136px] flex justify-between items-center ">
                     <p className="text-[#1A202C] font-semibold text-xl">
                       Reviews
                     </p>
-                    <span className="bg-[#3563E9] rounded-[4px] text-white text-sm font-bold px-4 py-2">
-                      12{reviews.length}
+                    <span className="bg-[#3563E9] rounded-[4px] text-white text-sm font-bold px-4 py-[3px]">
+                      {Object.values(reviews).length}
                     </span>
                   </div>
+
+                  {Object.values(reviews).map((item) => (
+                    <div className="flex justify-between flex-wrap mb-5">
+                      <img
+                        className="w-[44px] lg:w-[56px]"
+                        src={item.userpic}
+                        alt="uerpic"
+                      />
+                      <section className="">
+                        <p className="text-[#1A202C] text-base font-semibold leading-6">
+                          {item.username}
+                        </p>
+                        <span className="text-[#90A3BF] text-xs font-medium">
+                          {item.userjob}
+                        </span>
+                      </section>
+
+                      <section className="">
+                        <p className="text-[#90A3BF] text-xs font-medium leading-4">
+                          {item.date}
+                        </p>
+                        <div className="flex justify-between items-center">
+
+{/* {
+item.userstar * (<span className="text-[#fbad39]">&#9733;</span> )
+
+
+} */}
+
+                          {/* {[...Array(5)].map((star, index) => {
+                            return (
+                              <>
+                          
+                                {/* <span className="text-[#fbad39]" value={item.userstar} >&#9733;</span> */}
+                                {/* { +item.userstar - 5 ? (
+                                  // <span className={`${5 - item.userstar} : text-[#fbad39] : "" `}>
+                                  <span className="text-[#fbad39]">
+                                    &#9733;
+                                  </span>
+                             ) : (
+                                   <span className="">&#9733;</span>
+                               )}  */}
+                              {/* </>
+                            );
+                          })} */} 
+                        </div>
+                      </section>
+                    </div>
+                  ))}
                 </section>
               </div>
             );

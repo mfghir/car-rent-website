@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import PopularCar from "../components/PopularCar";
 import { NavLink } from "react-router-dom";
 
-function Slider({data}) {
+function Slider({ data }) {
   const [width, setWidth] = useState(0);
   const carousel = useRef();
-//   const [data, setData] = useState(PopularCarData);
+  //   const [data, setData] = useState(PopularCarData);
 
   useEffect(() => {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
@@ -28,16 +28,14 @@ function Slider({data}) {
         >
           {data?.map((item) => {
             return (
-    <NavLink to={`/detailCar/${item.id}`}  >
-
-              <motion.div key={item.id} >
-                <PopularCar item={item} />
-               </motion.div>
-          </NavLink>
+              <NavLink to={`/detailCar/${item.id}`} key={item.id}>
+                <motion.div>
+                  <PopularCar item={item} />
+                </motion.div>
+              </NavLink>
             );
           })}
         </motion.div>
-        
       </motion.div>
     </>
   );
