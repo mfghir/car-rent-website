@@ -59,11 +59,19 @@ const DetailCar = () => {
                   <h1 className="text-[#1A202C] font-bold text-xl">{name}</h1>
                   <div className="flex justify-between items-center w-[64%]  mt-[6px]">
                     <div className="flex justify-between items-center">
-                      <Star1 size="12" color="#fbad39" variant="Bold" />
-                      <Star1 size="12" color="#fbad39" variant="Bold" />
-                      <Star1 size="12" color="#fbad39" variant="Bold" />
-                      <Star1 size="12" color="#fbad39" variant="Bold" />
-                      <Star1 size="12" color="#90A3BF" />
+                      <span className="text-[#fbad39]">
+                        &#9733;
+                      </span>
+                      <span className="text-[#fbad39]">
+                        &#9733;
+                      </span>
+                      <span className="text-[#fbad39]">
+                        &#9733;
+                      </span>
+                      <span className="text-[#fbad39]">
+                        &#9733;
+                      </span>
+                      <span className="text-[#90A3BF]">&#9733;</span>
                     </div>
 
                     <p className="font-medium text-xs text-[#90A3BF]">
@@ -158,27 +166,8 @@ const DetailCar = () => {
                         <p className="text-[#90A3BF] text-xs font-medium leading-4">
                           {item.date}
                         </p>
-                        <div className="flex justify-between items-center">
-                          {/* <span className="">&#9733;</span> */}
-                          <StarRating rating={item.userstar} />
 
-                          {/* {[...Array(5)].map((star, index) => {
-                            return (
-                              <>
-                          
-                                {/* <span className="text-[#fbad39]" value={item.userstar} >&#9733;</span> */}
-                          {/* { +item.userstar - 5 ? (
-                                  // <span className={`${5 - item.userstar} : text-[#fbad39] : "" `}>
-                                  <span className="text-[#fbad39]">
-                                    &#9733;
-                                  </span>
-                             ) : (
-                                   <span className="">&#9733;</span>
-                               )}  */}
-                          {/* </>
-                            );
-                          })} */}
-                        </div>
+                        <StarRating rating={item.userstar} />
                       </section>
                     </div>
                   ))}
