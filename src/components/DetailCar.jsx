@@ -1,16 +1,22 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import NavbarIcon from "./NavbarIcon";
 import SortCategory from "../common/SortCategory";
 import ProductList from "./ProductList";
+
 import { useParams } from "react-router-dom";
 import { ProductsContext } from "../context/ProductsProvider";
-import { Star1 } from "iconsax-react";
 import StarRating from "../common/StarRating";
+import { ArrowDown2 } from "iconsax-react";
 
 const DetailCar = () => {
   const [state, dispatch] = useContext(ProductsContext);
   const { id } = useParams();
+  const [readMore, setReadMore] = useState(false);
 
+  const [count, setCount] = useState(0);
+  // useEffect(() => {
+  //   setCount(previousCount => previousCount + 1)
+  // }, [])
   // const filteredPop = state.popularCar.filter(
   //   (car) => car.id.toString() === id
   // );
@@ -59,18 +65,10 @@ const DetailCar = () => {
                   <h1 className="text-[#1A202C] font-bold text-xl">{name}</h1>
                   <div className="flex justify-between items-center w-[64%]  mt-[6px]">
                     <div className="flex justify-between items-center">
-                      <span className="text-[#fbad39]">
-                        &#9733;
-                      </span>
-                      <span className="text-[#fbad39]">
-                        &#9733;
-                      </span>
-                      <span className="text-[#fbad39]">
-                        &#9733;
-                      </span>
-                      <span className="text-[#fbad39]">
-                        &#9733;
-                      </span>
+                      <span className="text-[#fbad39]">&#9733;</span>
+                      <span className="text-[#fbad39]">&#9733;</span>
+                      <span className="text-[#fbad39]">&#9733;</span>
+                      <span className="text-[#fbad39]">&#9733;</span>
                       <span className="text-[#90A3BF]">&#9733;</span>
                     </div>
 
@@ -146,31 +144,59 @@ const DetailCar = () => {
                     </span>
                   </div>
 
-                  {Object.values(reviews).map((item) => (
-                    <div className="flex justify-between flex-wrap mb-5">
-                      <img
-                        className="w-[44px] lg:w-[56px]"
-                        src={item.userpic}
-                        alt="uerpic"
-                      />
-                      <section className="">
-                        <p className="text-[#1A202C] text-base font-semibold leading-6">
-                          {item.username}
-                        </p>
-                        <span className="text-[#90A3BF] text-xs font-medium">
-                          {item.userjob}
-                        </span>
-                      </section>
+                  {Object.values(reviews).map((item) => {
+                    const {
+                      userpic,
+                      username,
+                      userjob,
+                      date,
+                      userstar,
+                      useropion,
+                    } = item;
+                    return (
+                      <section className="flex flex-wrap justify-end  mb-5 mt-6">
+                        <div className="flex justify-between items-start w-full">
+                          <div className="flex justify-between items-start">
+                            <img
+                              className="w-[44px] lg:w-[56px] mr-2"
+                              src={userpic}
+                              alt="uerpic"
+                            />
+                            <section className="">
+                              <p className="text-[#1A202C] text-base font-semibold leading-6">
+                                {username}
+                              </p>
+                              <span className="text-[#90A3BF] text-xs font-medium">
+                                {userjob}
+                              </span>
+                            </section>
+                          </div>
 
-                      <section className="">
-                        <p className="text-[#90A3BF] text-xs font-medium leading-4">
-                          {item.date}
-                        </p>
+                          <section className="">
+                            <p className="text-[#90A3BF] text-xs font-medium leading-6">
+                              {date}
+                            </p>
 
-                        <StarRating rating={item.userstar} />
+                            <StarRating rating={userstar} />
+                          </section>
+                        </div>
+
+                        <p
+                          className="text-[#90A3BF] font-normal text-xs mt-4 leading-6 w-3/4"
+                          onClick={() => setReadMore(!readMore)}
+                        >
+                          {!readMore
+                            ? `${useropion.substring(0, 80)}...`
+                            : useropion}
+                        </p>
                       </section>
-                    </div>
-                  ))}
+                    );
+                  })}
+
+                  <div className="flex justify-between items-center  flex-row mx-auto mt-6 px-5 py-2 text-[#90A3BF] w-fit rounded hover:bg-[#90A3BF] hover:text-[#1A202C] transition cursor-pointer">
+                    <span className="font-medium text-sm mr-2">Show All</span>
+                    <ArrowDown2 size="14" />
+                  </div>
                 </section>
               </div>
             );
