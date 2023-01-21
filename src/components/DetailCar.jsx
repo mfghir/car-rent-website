@@ -1,27 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import NavbarIcon from "./NavbarIcon";
 import SortCategory from "../common/SortCategory";
 import ProductList from "./ProductList";
 import { useParams } from "react-router-dom";
 import { ProductsContext } from "../context/ProductsProvider";
 import { Star1 } from "iconsax-react";
+import StarRating from "../common/StarRating";
 
 const DetailCar = () => {
   const [state, dispatch] = useContext(ProductsContext);
   const { id } = useParams();
 
-  const filteredPop = state.popularCar.filter(
-    (car) => car.id.toString() === id
-  );
-  const filterRec = state.recommandedCar.filter(
-    (car) => car.id.toString() === id
-  );
+  // const filteredPop = state.popularCar.filter(
+  //   (car) => car.id.toString() === id
+  // );
+  // const filterRec = state.recommandedCar.filter(
+  //   (car) => car.id.toString() === id
+  // );
 
   const filterCarList = state.carList.filter((car) => car.id.toString() === id);
-
-  // const testData = [state.popularCar ,state.recommandedCar ].filter(
-  //   (car) => car.id.toString() === id
-  // )
 
   return (
     <>
@@ -162,19 +159,15 @@ const DetailCar = () => {
                           {item.date}
                         </p>
                         <div className="flex justify-between items-center">
-
-{/* {
-item.userstar * (<span className="text-[#fbad39]">&#9733;</span> )
-
-
-} */}
+                          {/* <span className="">&#9733;</span> */}
+                          <StarRating rating={item.userstar} />
 
                           {/* {[...Array(5)].map((star, index) => {
                             return (
                               <>
                           
                                 {/* <span className="text-[#fbad39]" value={item.userstar} >&#9733;</span> */}
-                                {/* { +item.userstar - 5 ? (
+                          {/* { +item.userstar - 5 ? (
                                   // <span className={`${5 - item.userstar} : text-[#fbad39] : "" `}>
                                   <span className="text-[#fbad39]">
                                     &#9733;
@@ -182,9 +175,9 @@ item.userstar * (<span className="text-[#fbad39]">&#9733;</span> )
                              ) : (
                                    <span className="">&#9733;</span>
                                )}  */}
-                              {/* </>
+                          {/* </>
                             );
-                          })} */} 
+                          })} */}
                         </div>
                       </section>
                     </div>
