@@ -24,7 +24,7 @@ const DetailCar = () => {
   //   (car) => car.id.toString() === id
   // );
 
-  const filterCarList = state.carList.filter((car) => car.id.toString() === id);
+  const filterCarList = state.carList?.filter((car) => car.id.toString() === id);
 
   return (
     <>
@@ -33,7 +33,7 @@ const DetailCar = () => {
         <SortCategory />
 
         <div className="md:w-3/4 px-6">
-          {filterCarList.map((item) => {
+          {filterCarList?.map((item) => {
             const {
               id,
               name,
@@ -154,11 +154,11 @@ const DetailCar = () => {
                       useropion,
                     } = item;
                     return (
-                      <section className="flex flex-wrap justify-end  mb-5 mt-6">
+                      <section className="flex flex-wrap justify-end  mb-5 mt-6" key={item.id}>
                         <div className="flex justify-between items-start w-full">
                           <div className="flex justify-between items-start">
                             <img
-                              className="w-[44px] lg:w-[56px] mr-2"
+                              className="w-[44px] lg:w-[56px] mr-2 rounded-full"
                               src={userpic}
                               alt="uerpic"
                             />

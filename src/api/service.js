@@ -30,20 +30,21 @@
 
 import axios from "axios";
 
-const baseURL = "https://carrent.app.smartmock.io";
+// const baseURL = "https://carrent.app.smartmock.io";
 
-async function popularCarAPI() {
-  const { data } = await axios.get(`${baseURL}/popularCar`);
-  return data;
-}
+// async function popularCarAPI() {
+//   const { data } = await axios.get(`${baseURL}/popularCar`);
+//   return data;
+// }
 
-async function recommandedCarAPI() {
-  const { data } = await axios.get(`${baseURL}/recommandedCar`);
-  return data;
-}
+// async function recommandedCarAPI() {
+//   const { data } = await axios.get(`${baseURL}/recommandedCar`);
+//   return data;
+// }
 async function carListAPI() {
-  const { data } = await axios.get(`${baseURL}/maincarlist`);
+  const { data } = await axios.get(`https://svcars.vercel.app/cars`);
   return data;
 }
 
-export { popularCarAPI, recommandedCarAPI,carListAPI };
+// export { popularCarAPI, recommandedCarAPI,carListAPI };
+export { carListAPI };

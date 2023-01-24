@@ -1,12 +1,13 @@
 import React, { useReducer, createContext, useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import { popularCarAPI, recommandedCarAPI,carListAPI } from "../api/service";
+// import { popularCarAPI, recommandedCarAPI,carListAPI } from "../api/service";
+import { carListAPI } from "../api/service";
 import { reducer } from "./reducer";
 
 const initialState = {
   isOpen: false,
+  carList: [],
 
-  carList:[],
   recommandedCar: [],
   popularCar: [],
 
@@ -123,24 +124,19 @@ export const ProductsContext = createContext(initialState);
 
 const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  // const { data, error, isError, isLoading } = useQuery(['popularCar'], () => popularCarAPI());
+  const { data, error, isError, isLoading } = useQuery("carlist", () =>
+    carListAPI()
+  );
+
+  const [dataTest, setDataTest] = useState([]);
+
+  console.log(data);
 
   useEffect(() => {
-    const fetchApi = async () => {
-      const resPop = await popularCarAPI();
-      const resRec = await recommandedCarAPI();
-      const resCar = await carListAPI();
-      // if(data){
-      //   dispatch({ type: "GET_POPULAR_CAR_DATA", payload: data });
-      // }
-
-      dispatch({ type: "GET_POPULAR_CAR_DATA", payload: resPop });
-      dispatch({ type: "GET_RCOMMANDED_CAR_DATA", payload: resRec });
-      dispatch({ type: "GET_CAR_DATA", payload: resCar });
-    };
-
-    fetchApi();
-  }, []);
+    if (data) {
+      dispatch({ type: "GET_CAR_DATA", payload: data });
+    }
+  }, [data]);
 
   return (
     <ProductsContext.Provider value={[state, dispatch]}>

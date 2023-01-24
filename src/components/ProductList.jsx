@@ -1,19 +1,17 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { useQuery } from "react-query";
-
 import { ProductsContext } from "../context/ProductsProvider";
+
 import RecommandCar from "./RecommandCar";
 import Slider from "../common/Slider";
 
-// const fetchPopCars = async () => {
-//   const res = await fetch(`https://quiet-ape-7.app.smartmock.io/popularCar`);
-//   return console.log(res.json());
-// };
+
 
 const ProductList = () => {
-  // const {data ,error,isLoading  } = useQuery( 'popularCar', fetchPopCars )
   const [state, dispatch] = useContext(ProductsContext);
+  const popularCarList = state.carList.filter((car) => car.sort === "popularCar");
+  const recommandCarList = state.carList.filter((car) => car.sort === "recommandCar");
+
 
   return (
     <div className="mt-8 px-6 lg:px-16 ">
@@ -24,7 +22,7 @@ const ProductList = () => {
           <p className="text-[#3563E9] text-xs font-semibold">View All</p>
         </Link>
       </div>
-      <Slider data={state.popularCar} />
+      <Slider data={popularCarList} />
 
       {/* --------------------------- Recomendation Car */}
 
@@ -32,7 +30,7 @@ const ProductList = () => {
         Recomendation Car
       </p>
       <section className="grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-8  ">
-        {state.recommandedCar.map((item) => (
+        {recommandCarList.map((item) => (
           <RecommandCar item={item} key={item.id} />
         ))}
       </section>
