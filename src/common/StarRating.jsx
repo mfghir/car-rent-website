@@ -16,23 +16,19 @@ const StarRating = ({ rating }) => {
   //   }
 
   return (
-    <>
-      {/* <div className="flex justify-between items-center ">
-        {stars}
-     </div>  */}
-
-      <div className="flex justify-between items-center ">
-        {[...Array(5)].map((item, key) => {
-          return (
-            <span
-              className={key < rating ? "text-[#fbad39]" : "text-[#90A3BF]"}
-            >
-              &#9733;
-            </span>
-          );
-        })}
-      </div>
-    </>
+    <div className="" >
+      {[...Array(5)].map((item, key) => {
+        return (
+          <span
+            className={`ml-[2px] lg:scale-[1.7] lg:ml-[5px] inline-block ${
+              key < rating ? "text-[#fbad39]" : "text-[#90A3BF]"
+            } `}
+          >
+            &#9733;
+          </span>
+        );
+      })}
+    </div>
   );
 };
 

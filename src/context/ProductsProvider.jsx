@@ -1,7 +1,7 @@
-import React, { useReducer, createContext, useEffect, useState } from "react";
+import React, { useReducer, createContext, useEffect}from "react";
 import { useQuery } from "react-query";
-// import { popularCarAPI, recommandedCarAPI,carListAPI } from "../api/service";
 import { carListAPI } from "../api/service";
+
 import { reducer } from "./reducer";
 
 const initialState = {
@@ -128,9 +128,6 @@ const ProductsProvider = ({ children }) => {
     carListAPI()
   );
 
-  const [dataTest, setDataTest] = useState([]);
-
-  console.log(data);
 
   useEffect(() => {
     if (data) {
