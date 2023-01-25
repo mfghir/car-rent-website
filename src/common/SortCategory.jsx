@@ -1,4 +1,3 @@
-import { CloseSquare } from "iconsax-react";
 import React, { useContext } from "react";
 import { ProductsContext } from "../context/ProductsProvider";
 
@@ -80,7 +79,7 @@ const SortCategory = () => {
         </span>
 
         <div className="mt-8">
-          {/* <input
+          <input
             id="default-range"
             type="range"
             step="10"
@@ -88,14 +87,7 @@ const SortCategory = () => {
             max="200"
             value="100"
             className="w-full h-2 bg-[#90A3BF] appearance-none rounded  cursor-pointer  focus:outline-none focus:ring-0 focus:shadow-none"
-          /> */}
-          <input type="range" min="0" max="100" value="50" className="range range-xs range-accent range-[#3563E9] bg-[#90A3BF]" />
-          <label
-            htmlFor="default-range"
-            className="block mt-4 text-xl font-semibold text-[#596780] "
-          >
-            Max. $100.00
-          </label>
+          />
         </div>
       </section>
     </div>

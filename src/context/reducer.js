@@ -10,18 +10,39 @@ const sumItems = (items) => {
   return { total };
 };
 
+
+
+
+
+const CartCalculater = (products) => {
+  const itemsCounter = products.reduce(
+    (total, product) => total + product.quantity,
+    0
+  );
+  const total = products.reduce(
+    (total, product) => total + product.offPrice * product.quantity,
+    0
+  );
+  const totalWithoutOff = products.reduce(
+    (total, product) => total + product.price * product.quantity,
+    0
+  );
+  const offPrice = products.reduce(
+    (total, product) => total + product.offAmount * product.quantity,
+    0
+  );
+
+  return { itemsCounter, total, offPrice, totalWithoutOff };
+};
+
+
+
+
+
+
+
 export const reducer = (state, action) => {
   switch (action.type) {
-    // case "IS_OPEN": {
-    //   if (state.isOpen) {
-
-    //     state.isOpen(true)
-    //   }
-
-    //   console.log(state.isOpen)
-    //   return { ...state, isOpen };
-    // }
-
     case "IS_OPEN":
       return {
         ...state,
@@ -41,6 +62,24 @@ export const reducer = (state, action) => {
     //   };
     // }
 
+
+
+        case "ADD_ITEM":
+      if (!state.selectedItems.find((item) => item.id === action.payload.id)) {
+        state.selectedItems.push({
+          ...action.payload,
+          quantity: 1,
+        });
+      }
+      console.log(state.selectedItems);
+      return {
+        ...state,
+        selectedItems: [...state.selectedItems],
+        ...CartCalculater(state.selectedItems),
+        checkout: false
+      };
+
+
     // case "ADD_TO_CART": {
     //   if (!state.cart.find((item) => item.id === action.payload.id)) {
     //     state.cart.push({
@@ -55,6 +94,9 @@ export const reducer = (state, action) => {
     //     checkout: false,
     //   };
     // }
+
+
+
 
     // case "INCREASE": {
     //   const indexI = state.cart.findIndex(

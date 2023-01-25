@@ -7,11 +7,9 @@ import { reducer } from "./reducer";
 const initialState = {
   isOpen: false,
   carList: [],
-
-  recommandedCar: [],
-  popularCar: [],
-
   selectedItems: [],
+
+
   itemsCounter: 0,
   total: 0,
   totalWithoutOff: 0,

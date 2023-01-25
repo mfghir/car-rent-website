@@ -1,18 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
-import NavbarIcon from "./NavbarIcon";
-import SortCategory from "../common/SortCategory";
-import ProductList from "./ProductList";
+import NavbarIcon from "../NavbarIcon";
+import ProductList from "../ProductList";
 
 import { useParams } from "react-router-dom";
-import { ProductsContext } from "../context/ProductsProvider";
-import StarRating from "../common/StarRating";
-import { ArrowDown2 } from "iconsax-react";
+import { ArrowDown2, Heart } from "iconsax-react";
+import { ProductsContext } from "../../context/ProductsProvider";
+
+import SortCategory from "../../common/SortCategory";
+import StarRating from "../../common/StarRating";
+import DetailCarProductList from "./DetailCarProductList";
 
 const DetailCar = () => {
   const [state, dispatch] = useContext(ProductsContext);
   const { id } = useParams();
+  
   const [readMore, setReadMore] = useState(false);
-
   const [showAll, setShowAll] = useState(false);
 
   const filterCarList = state.carList?.filter(
@@ -30,6 +32,7 @@ const DetailCar = () => {
             const {
               id,
               name,
+              fav,
               views,
               reviewer,
               caption,
@@ -64,9 +67,15 @@ const DetailCar = () => {
                   </section>
 
                   <section className="mt-8 bg-white p-4 rounded-[10px] lg:w-[48%] lg:p-6 lg:mt-0">
+                    <div className="flex justify-between items-center">
                     <h1 className="text-[#1A202C] font-bold text-xl lg:text-[32px]">
                       {name}
                     </h1>
+                    <span className="hidden md:block">
+                    {fav ? <Heart color="#ED3F3F" variant="Bold"/> : <Heart color="#90A3BF"/> }
+                    </span>
+
+                    </div>
                     <div className="flex justify-between items-center   mt-2">
                       <div className="flex justify-between items-center">
                         <span className="text-[#fbad39]  mr-[2px] lg:scale-[1.7] lg:mr-[5px] ">
@@ -152,7 +161,7 @@ const DetailCar = () => {
                   </section>
                 </div>
 
-                <section className="mt-8 bg-white p-4 rounded-[10px] lg:w-full">
+                <section className="mt-8 bg-white py-4 px-2 lg:p-6 rounded-[10px] lg:w-full">
                   <div className="w-[136px] flex justify-between items-center ">
                     <p className="text-[#1A202C] font-semibold text-xl">
                       Reviews
@@ -174,11 +183,7 @@ const DetailCar = () => {
                         useropion,
                       } = item;
                       return (
-                        <section
-                          className="flex  mb-5 mt-6"
-                          key={item.id}
-                        >
-                          {/* <div className="flex justify-between items-start w-full"> */}
+                        <section className="flex  mb-5 mt-6" key={item.id}>
                           <img
                             className="w-[44px] h-[44px] lg:w-[56px] lg:h-[56px] mr-2 rounded-full"
                             src={userpic}
@@ -196,25 +201,22 @@ const DetailCar = () => {
                                 </span>
                               </section>
 
-                            <section className="flex flex-wrap justify-end flex-col ">
-                              <p className="text-[#90A3BF] text-xs font-medium leading-6 lg:text-sm">
-                                {date}
-                              </p>
-                              <StarRating rating={userstar} />
-                            </section>
+                              <section className="flex flex-wrap justify-end flex-col ">
+                                <p className="text-[#90A3BF] text-xs font-medium leading-6 lg:text-sm">
+                                  {date}
+                                </p>
+                                <StarRating rating={userstar} />
+                              </section>
                             </div>
 
                             <p
-                              className="text-[#90A3BF] font-normal text-xs mt-4 leading-6  w-full"
+                              className={`text-[#90A3BF] font-normal text-xs leading-6  w-full lg:text-sm lg:leading-7 lg:mt-3
+                               ${!readMore ? "line-clamp-2" : "line-clamp-0"}`}
                               onClick={() => setReadMore(!readMore)}
                             >
-                              {!readMore
-                                ? `${useropion.substring(0, 80)}...`
-                                : useropion}
+                              {useropion}
                             </p>
                           </div>
-
-                          {/* </div> */}
                         </section>
                       );
                     })}
@@ -231,7 +233,8 @@ const DetailCar = () => {
             );
           })}
 
-          <ProductList />
+          {/* <ProductList /> */}
+          <DetailCarProductList />
         </div>
       </div>
     </>

@@ -1,7 +1,11 @@
 import { GasStation, Heart, Profile2User, Story } from "iconsax-react";
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { ProductsContext } from "../context/ProductsProvider";
 
 const PopularCar = ({ item }) => {
+  const [state, dispatch] = useContext(ProductsContext);
+
   return (
     <div className="rounded-[10px] bg-white p-4  mr-5 w-60 lg:mr-8 lg:w-[304px] ">
       <div className="flex justify-between items-center ">
@@ -28,21 +32,33 @@ const PopularCar = ({ item }) => {
 
       <ul className="flex justify-center items-center">
         <li className="flex items-center">
-          <GasStation className="w-[14px] h-[14px] md:w-6 lg:h-6" color="#90a3bf" variant="Bold" />
+          <GasStation
+            className="w-[14px] h-[14px] md:w-6 lg:h-6"
+            color="#90a3bf"
+            variant="Bold"
+          />
           <span className="font-medium text-xs text-[#90A3BF] ml-1 md:text-sm">
             {item.fuel}
           </span>
         </li>
 
         <li className="flex items-center mx-4">
-          <Story className="w-[14px] h-[14px] md:w-6 lg:h-6" color="#90a3bf" variant="Bold" />
+          <Story
+            className="w-[14px] h-[14px] md:w-6 lg:h-6"
+            color="#90a3bf"
+            variant="Bold"
+          />
           <span className="font-medium text-xs text-[#90A3BF] ml-1 md:text-sm">
             Manual
           </span>
         </li>
 
         <li className="flex items-center">
-          <Profile2User className="w-[14px] h-[14px] md:w-6 lg:h-6" color="#90a3bf" variant="Bold" />
+          <Profile2User
+            className="w-[14px] h-[14px] md:w-6 lg:h-6"
+            color="#90a3bf"
+            variant="Bold"
+          />
           <span className="font-medium text-xs text-[#90A3BF] ml-1 md:text-sm">
             {item.people}People
           </span>
@@ -54,9 +70,14 @@ const PopularCar = ({ item }) => {
           ${item.price}.00/
           <span className="text-[#90A3BF] text-xs pl-1">day</span>
         </p>
-        <button className="bg-[#3563E9]  rounded-[4px] text-white text-xs lg:text-base font-semibold px-4 py-[10px] lg:px-5">
+        <Link to="/payment">
+        <button
+          className="bg-[#3563E9] rounded-[4px] text-white text-xs lg:text-base font-semibold px-4 py-[10px] lg:px-5 "
+          onClick={() => dispatch({ type: "ADD_ITEM", payload: item })}
+          >
           Rental Now
         </button>
+          </Link>
       </div>
     </div>
   );

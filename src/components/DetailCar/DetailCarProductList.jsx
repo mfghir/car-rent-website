@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { ProductsContext } from "../context/ProductsProvider";
+import { ProductsContext } from "../../context/ProductsProvider";
 
-import RecommandCar from "./RecommandCar";
-import Slider from "../common/Slider";
+import RecommandCar from "../RecommandCar";
+import Slider from "../../common/Slider";
 
 
 
-const ProductList = () => {
+const DetailCarProductList = () => {
   const [state, dispatch] = useContext(ProductsContext);
   const popularCarList = state.carList.filter((car) => car.sort === "popularCar");
   const recommandCarList = state.carList.filter((car) => car.sort === "recommandCar");
@@ -30,21 +30,23 @@ const ProductList = () => {
         Recomendation Car
       </p>
       <section className="grid grid-cols-1 md:grid-cols-2 md:gap-5 xl:grid-cols-3 xl:gap-8  ">
-        {recommandCarList.map((item) => (
+      <Slider data={recommandCarList} />
+
+        {/* {recommandCarList.map((item) => (
           <RecommandCar item={item} key={item.id} />
-        ))}
+        ))} */}
       </section>
 
-      <div className="flex items-center mt-12 lg:mt-16">
+      {/* <div className="flex items-center mt-12 lg:mt-16">
         <button className=" bg-[#3563E9] rounded-[4px] text-white text-xs lg:text-base font-semibold px-4 py-[10px] mx-auto">
           Show More Car
         </button>
         <span className="text-sm font-bold lg:font-medium text-[#90A3BF]">
           120 Car
         </span>
-      </div>
+      </div> */}
     </div>
   );
 };
 
-export default ProductList;
+export default DetailCarProductList;

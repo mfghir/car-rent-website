@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const RecommandCar = ({ item }) => {
   return (
     <NavLink to={`/detailCar/${item.id}`}  >
-    <div className="rounded-[10px] bg-white p-4 mt-5 ">
+    <div className="rounded-[10px] bg-white p-2 mt-5 ">
       <div className="flex justify-between items-center ">
         <p className="flex flex-col">
           <span className="font-semibold text-base text-[#1A202C] lg:text-xl lg:font-bold">

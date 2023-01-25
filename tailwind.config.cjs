@@ -7,18 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // switchBtnShadow: {
-      //   content: "",
-      //   position: "absolute",
-      //   width: "100%",
-      //   height: "60px",
-
-      //   // 'background': 'rgba(16, 50, 147, 0.28)' ,
-      //   background: "red",
-      //   filter: "blur(20px)",
-      //   transform: "rotate(-90deg)",
-      // },
+      fontFamily: {
+        body: ["Plus Jakarta Sans", "sans-serif"],
+      },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("@tailwindcss/line-clamp")],
 };
