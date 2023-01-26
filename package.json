@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@material-tailwind/react": "^1.2.5",
     "@tailwindcss/line-clamp": "^0.4.2",
     "axios": "^1.2.2",
     "framer-motion": "^8.3.3",
