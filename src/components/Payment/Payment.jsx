@@ -75,6 +75,7 @@ const Payment = () => {
                         ${price}.00
                       </span>
                     </li>
+                    
                     <li className="flex justify-between items-center mt-3">
                       <span className="text-[#90A3BF] font-semibold text-xs lg:font-medium lg:text-base">
                         Tax
@@ -295,7 +296,7 @@ const Payment = () => {
                 htmlFor="default-radio-2"
                 className="ml-2 text-base font-semibold text-[#1A202C]"
               >
-                Pick-Up
+                Drop - Off
               </label>
             </div>
 
@@ -500,7 +501,7 @@ const Payment = () => {
 
         <section className="p-4 bg-white rounded-[10px] mt-8">
           <ul className="flex justify-between mt-6">
-            <li>
+            <li className="pr-9">
               <p className="text-[#1A202C] font-bold text-base lg:text-xl">
                 Confirmation
               </p>
@@ -509,7 +510,7 @@ const Payment = () => {
                 ready!
               </span>
             </li>
-            <li className="text-[#90A3BF] font-medium text-xs lg:font-medium lg:text-sm">
+            <li className="text-[#90A3BF] font-medium text-xs lg:font-medium lg:text-sm w-2/5">
               Step 4 of 4
             </li>
           </ul>
@@ -529,6 +530,41 @@ const Payment = () => {
               I agree with sending an Marketing and newsletter emails. No spam,
               promissed!
             </label>
+          </div>
+
+          <div className="flex justify-between items-center rounded-[10px] py-[10px] px-4 bg-[#F6F7F9] mt-6">
+            <input
+              id="Bitcoin"
+              type="checkbox"
+              value=""
+              name="default-radio"
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600"
+            />
+            <label
+              htmlFor="Bitcoin"
+              className="text-[#1A202C] ml-4 font-medium text-xs  lg:font-semibold lg:text-base"
+            >
+              I agree with our terms and conditions and privacy policy!
+            </label>
+          </div>
+
+          <button className="mt-6 bg-[#3563E9] rounded-[4px] text-white text-xs lg:text-base font-semibold px-4 py-[10px]">
+            Rental Now
+          </button>
+
+          <div className="mt-8">
+            <img
+            className="mb-4"
+              src="https://i.postimg.cc/x80KJNYN/ic-security-safety.png"
+              alt="ic-security-safety"
+            />
+            <p className="text-[#1A202C] font-bold text-base lg:text-xl">
+              Confirmation
+            </p>
+            <span className="text-[#90A3BF] font-normal text-xs lg:font-medium lg:text-sm">
+              We are getting to the end. Just few clicks and your rental is
+              ready!
+            </span>
           </div>
         </section>
       </section>
