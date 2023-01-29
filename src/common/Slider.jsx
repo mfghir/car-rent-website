@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-// import images from "./images";
-// import { PopularCarData } from "../data/popularCarData";
 import PopularCar from "../components/PopularCar";
+
 import { NavLink } from "react-router-dom";
 
 function Slider({ data }) {
   const [width, setWidth] = useState(0);
   const carousel = useRef();
-  //   const [data, setData] = useState(PopularCarData);
 
   useEffect(() => {
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);

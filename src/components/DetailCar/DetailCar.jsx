@@ -40,6 +40,7 @@ const DetailCar = () => {
               capacity,
               fuel,
               price,
+              offPrice,
               reviews,
             } = item;
             return (
@@ -142,7 +143,7 @@ const DetailCar = () => {
                       <div>
                         <section className="flex justify-between items-end font-bold">
                           <div className="text-[#1A202C] text-xl  lg:text-[28px]">
-                            ${`${Math.floor(price - price * 0.2)}`}.00/
+                            ${offPrice}.00
                           </div>
                           <span className="text-[#90A3BF] text-xs lg:text-base">
                             days

@@ -22,6 +22,13 @@ const ProductList = () => {
           <p className="text-[#3563E9] text-xs font-semibold">View All</p>
         </Link>
       </div>
+
+      <div className="bg-red-200 h-10 w-full">
+      {state.filteredCars.map(item=> {
+        <p>{item.name}</p>
+      })}
+
+      </div>
       <Slider data={popularCarList} />
 
       {/* --------------------------- Recomendation Car */}

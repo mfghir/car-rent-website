@@ -19,10 +19,10 @@ const CartCalculater = (products) => {
     (total, product) => total + product.quantity,
     0
   );
-  const total = products.reduce(
-    (total, product) => total + product.offPrice * product.quantity,
-    0
-  );
+  // const total = products.reduce(
+  //   (total, product) => total + product.offPrice * product.quantity,
+  //   0
+  // );
   const totalWithoutOff = products.reduce(
     (total, product) => total + product.price * product.quantity,
     0
@@ -71,11 +71,10 @@ export const reducer = (state, action) => {
           quantity: 1,
         });
       }
-      console.log(state.selectedItems);
       return {
         ...state,
         selectedItems: [...state.selectedItems],
-        ...CartCalculater(state.selectedItems),
+        ...sumItems(state.selectedItems),
         checkout: false
       };
 
@@ -211,18 +210,22 @@ export const reducer = (state, action) => {
     //   }
     // }
 
-    // case "search": {
-    //   const val = action.event.target.value;
-    //   if (val === "") {
-    //     return state;
-    //   } else {
-    //     const filterPro = state.filter((p) =>
-    //       p.name.toLowerCase().includes(val.toLowerCase())
-    //     );
-    //     return filterPro;
-    //   }
-    //   // return state;
-    // }
+    case "SEARCH": {
+      const val = action.payload;
+      if (val === "") {
+        return state;
+      } else {
+        const filterPro = state.carList.filter((p) =>
+          p.name.toLowerCase().includes(val.toLowerCase())
+        );
+        // return filterPro;
+      return { ...state, filteredCars: filterPro };
+
+      }
+      // return { ...state, filteredCars: filterPro };
+
+      // return state;
+    }
 
     case "GET_CAR_DATA":
       return { ...state, carList: action.payload };

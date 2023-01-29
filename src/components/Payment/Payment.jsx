@@ -75,7 +75,7 @@ const Payment = () => {
                         ${price}.00
                       </span>
                     </li>
-                    
+
                     <li className="flex justify-between items-center mt-3">
                       <span className="text-[#90A3BF] font-semibold text-xs lg:font-medium lg:text-base">
                         Tax
@@ -113,7 +113,7 @@ const Payment = () => {
               </span>
             </li>
             <li className="text-[#1A202C] font-bold text-base lg:text-[32px]">
-              $80.00
+              ${state.total}.00
             </li>
           </ul>
         </section>

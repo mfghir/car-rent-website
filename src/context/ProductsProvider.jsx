@@ -9,6 +9,7 @@ const initialState = {
   carList: [],
   selectedItems: [],
 
+  filteredCars :[],
 
   itemsCounter: 0,
   total: 0,

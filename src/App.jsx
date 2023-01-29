@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 
-import Category from "./components/Category";
+import Category from "./pages/Category";
 import Footer from "./pages/Footer";
 import DetailCar from "./components/DetailCar/DetailCar";
 

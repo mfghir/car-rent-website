@@ -5,10 +5,36 @@ import {
   Setting2,
   Setting4,
 } from "iconsax-react";
-import React from "react";
+import React, { useContext, useRef, useState } from "react";
+import { ProductsContext } from "../context/ProductsProvider";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const [state, dispatch] = useContext(ProductsContext);
+  const [searchTerm, setSearchTerm] = useState("");
+  // const nameRef = useRef();
+
+  // const handleChange = (e) => {
+  //   e.preventDefault();
+  //   setSearchTerm(e.target.value);
+  // };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    dispatch({ type: "SEARCH", payload: searchTerm });
+  };
+
+  const filterCoins = (e) => {
+    // const result = state.filteredCars.filter((coin) =>
+    //     coin.name.toLowerCase().includes(search.toLowerCase())
+    // );
+    // dispatch({
+    //   type: "SEARCH",
+    //   payload: e.target.value,
+    // });
+  };
+
   return (
     <div className="flex justify-between items-center flex-wrap pt-8 px-6 md:flex-nowrap lg:py-10 border-b border-[#C3D4E966]">
       <section className="flex justify-between items-center">
@@ -16,13 +42,19 @@ const Navbar = () => {
           <h1 className="text-[#3563E9] text-2xl lg:text-[32px]">MORENT</h1>
         </NavLink>
 
-        <form className="lg:w-96 md:w-80 h-12 lg:ml-16 md:ml-8 md:block hidden">
+        <form
+          className="lg:w-96 md:w-80 h-12 lg:ml-16 md:ml-8 md:block hidden"
+          onSubmit={submitHandler}
+        >
           <div className="relative flex justify-between">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <button  type="submit"  className="absolute inset-y-0 left-0 flex items-center pl-3 cursor-pointer">
               <SearchNormal1 color="#596780" />
-            </div>
+            </button>
 
             <input
+              // ref={nameRef}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              // value={searchTerm}
               type="search"
               className="block w-full p-4 pl-10 text-sm text-[#596780] border border-[#C3D4E966] rounded-[70px]  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               placeholder="Search something here"
@@ -42,11 +74,7 @@ const Navbar = () => {
 
         <div className="relative">
           <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl bottom-6 left-5"></span>
-          <Notification
-            color="#596780"
-            variant="Bold"
-            className="md:mr-5 "
-          />
+          <Notification color="#596780" variant="Bold" className="md:mr-5 " />
         </div>
         <Setting2 color="#596780" variant="Bold" className="md:mr-5" />
 
@@ -57,7 +85,6 @@ const Navbar = () => {
         />
       </div>
 
-      
       <img
         className="w-7 h-7 md:hidden"
         src="https://upcdn.io/kW15b2b/raw/Imageprofile-46DF.png"

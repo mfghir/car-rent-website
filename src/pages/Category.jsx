@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import SortCategory from "../common/SortCategory";
 import { ProductsContext } from "../context/ProductsProvider";
-import DatePicker from "./DatePicker";
-import NavbarIcon from "./NavbarIcon";
-import ProductList from "./ProductList";
+
+import DatePicker from "../components/DatePicker";
+import NavbarIcon from "../components/NavbarIcon";
+import ProductList from "../components/ProductList";
 
 const Category = () => {
   const [state, dispatch] = useContext(ProductsContext);
