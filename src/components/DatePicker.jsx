@@ -62,47 +62,6 @@ const DatePicker = () => {
         </div>
 
         <div className="flex justify-between items-center">
-          {/* <div className="grid grid-cols-3 gap-2"> */}
-          <Select
-            styles={{
-              control: (base) => ({
-                ...base,
-                border: 0,
-                // borderRight : "2px solid red",
-              }),
-            }}
-            className="py-2  text-[#90A3BF] font-normal text-xs  w-1/3"
-            value={location}
-            onChange={handleChange}
-            options={locationOptions}
-          />
-          <Select
-            styles={{
-              control: (base) => ({
-                ...base,
-                border: 0,
-                // borderRight : "2px solid red",
-              }),
-            }}
-            className="py-2  text-[#90A3BF] font-normal text-xs w-1/3"
-            value={date}
-            onChange={dateHandleChange}
-            options={dateOptions}
-          />
-          <Select
-            className="py-2  text-[#90A3BF] font-normal text-xs w-1/3"
-            styles={{
-              control: (base) => ({
-                ...base,
-                border: 0,
-                // borderRight : "2px solid red",
-              }),
-            }}
-            value={time}
-            onChange={timeHandleChange}
-            options={timeOptions}
-          />
-
           {/* <div className="w-[30%] border-r-[1px] border-[#C3D4E966]">
             <span className="text-[#1A202C] font-bold text-base  ">
               Locations
@@ -117,11 +76,23 @@ const DatePicker = () => {
             </select>
           </div> */}
 
-          {/* <div className="">
-            <label className="mt-3 lg:mt-4 px-5 py-[18px] text-[#1A202C] font-semibold text-sm lg:text-base">
+          <div className="w-1/3">
+            <label className=" text-[#1A202C] font-semibold text-sm lg:text-base">
               Locations
             </label>
             <Select
+              styles={{
+                control: (base) => ({
+                  ...base,
+                  border: 0,
+                }),
+              }}
+              className="py-2  text-[#90A3BF] font-normal text-xs"
+              value={location}
+              onChange={handleChange}
+              options={locationOptions}
+            />
+            {/* <Select
               label="Select your city"
               className="border-none w-[126px]  block py-2 outline-none focus:outline-none  text-[#90A3BF] font-normal text-xs"
             >
@@ -130,8 +101,8 @@ const DatePicker = () => {
               <Option>Mashhad</Option>
               <Option>Ilam</Option>
               <Option>Fars</Option>
-            </Select>
-          </div> */}
+            </Select> */}
+          </div>
 
           {/* <div className="w-[30%]">
             <span className="text-[#1A202C] font-bold text-base block">
@@ -142,23 +113,6 @@ const DatePicker = () => {
               className="w-full  block focus:outline-none py-2  border-[#C3D4E966] text-[#90A3BF] text-xs"
               placeholder="21 July 2022"
             />
-          </div> */}
-
-          {/* <div className="">
-            <label className="text-[#1A202C] font-semibold text-sm lg:text-base">
-              Time
-            </label>
-            <Select
-              label="Select your time"
-              className="border-hidden w-[126px] block mt-3 lg:mt-4 px-5 py-[18px] font-medium  text-xs  lg:text-sm text-[#90A3BF] bg-[#F6F7F9] rounded-[10px] outline-blue-500  focus:ring-blue-500 focus:border-blue-500"
-            >
-              <Option>10:00</Option>
-              <Option>11:00</Option>
-              <Option>12:00</Option>
-              <Option>13:00</Option>
-              <Option>14:00</Option>
-              <Option>15:00</Option>
-            </Select>
           </div> */}
 
           {/* <div className="w-[30%] border-l-[1px] border-[#C3D4E966]">
@@ -173,11 +127,26 @@ const DatePicker = () => {
             </select>
           </div> */}
 
-          {/* <div className="">
+          <div className="w-1/3">
             <label className="text-[#1A202C] font-semibold text-sm lg:text-base">
               Date
             </label>
             <Select
+              styles={{
+                control: (base) => ({
+                  ...base,
+                  border: 0,
+                  borderRadius: 0,
+                  borderRight: "1px solid #C3D4E966",
+                  borderLeft: "1px solid #C3D4E966",
+                }),
+              }}
+              className="py-2  text-[#90A3BF] font-normal text-xs"
+              value={date}
+              onChange={dateHandleChange}
+              options={dateOptions}
+            />
+            {/* <Select
               label="Select your date"
               className="border-hidden bg-none w-[126px] block t-3 lg:mt-4 px-5 py-[18px] font-medium text-xs lg:text-sm text-[#90A3BF] bg-[#F6F7F9] rounded-[10px] outline-blue-500  focus:ring-blue-500 focus:border-blue-500"
             >
@@ -186,8 +155,37 @@ const DatePicker = () => {
               <Option>1401/02/02</Option>
               <Option>1401/03/07</Option>
               <Option>1401/06/14</Option>
-            </Select>
-          </div> */}
+            </Select> */}
+          </div>
+
+          <div className="w-1/3">
+            <label className="text-[#1A202C] font-semibold text-sm lg:text-base">
+              Time
+            </label>
+            <Select
+              className="py-2 text-[#90A3BF] font-normal text-xs"
+              styles={{
+                control: (base) => ({
+                  ...base,
+                  border: 0,
+                }),
+              }}
+              value={time}
+              onChange={timeHandleChange}
+              options={timeOptions}
+            />
+            {/* <Select
+              label="Select your time"
+              className="border-hidden w-[126px] block mt-3 lg:mt-4 px-5 py-[18px] font-medium  text-xs  lg:text-sm text-[#90A3BF] bg-[#F6F7F9] rounded-[10px] outline-blue-500  focus:ring-blue-500 focus:border-blue-500"
+            >
+              <Option>10:00</Option>
+              <Option>11:00</Option>
+              <Option>12:00</Option>
+              <Option>13:00</Option>
+              <Option>14:00</Option>
+              <Option>15:00</Option>
+            </Select> */}
+          </div>
         </div>
       </section>
 
@@ -216,11 +214,11 @@ const DatePicker = () => {
 
         <div className="flex justify-between items-center">
           <div className="w-[30%] border-r-[1px] border-[#C3D4E966]">
-            <span className="text-[#1A202C] font-bold text-base  ">
+            <span className="text-[#1A202C] font-bold text-base">
               Locations
             </span>
 
-            <select className=" w-full py-2 focus:outline-none  text-[#90A3BF] font-normal text-xs ">
+            <select className=" w-full py-2 focus:outline-none  text-[#90A3BF] font-normal text-xs bg-white">
               <option defaultValue>Semarang</option>
               <option value="US">United States</option>
               <option value="CA">Canada</option>
@@ -229,26 +227,37 @@ const DatePicker = () => {
             </select>
           </div>
 
-          <div className="w-[30%]">
+          <div className="w-[30%] border-r-[1px] border-[#C3D4E966]">
             <span className="text-[#1A202C] font-bold text-base block">
               Date
             </span>
-            <input
-              type="date"
-              className="w-full  block focus:outline-none py-2  border-[#C3D4E966] text-[#90A3BF] text-xs"
-              placeholder="21 July 2022"
-            />
+            <select className="w-full py-2 focus:outline-none border-[#C3D4E966] text-[#90A3BF] text-xs bg-white">
+              <option defaultValue>20 July 2022</option>
+              <option value="7">20 July 2022</option>
+              <option value="8">21 July 2022</option>
+              <option value="9">22 July 2022</option>
+              <option value="10">23 July 2022</option>
+            </select>
           </div>
 
-          <div className="w-[30%] border-l-[1px] border-[#C3D4E966]">
+          <div className="w-[30%]">
             <span className="text-[#1A202C] font-bold text-base">Time</span>
 
-            <select className="w-full py-2 focus:outline-none border-[#C3D4E966] text-[#90A3BF] text-xs">
-              <option defaultValue>6:00</option>
-              <option value="7">7:00</option>
-              <option value="8">8:00</option>
-              <option value="9">9:00</option>
+            <select className="w-full py-2 focus:outline-none border-[#C3D4E966] text-[#90A3BF] text-xs bg-white">
+              <option defaultValue value="1">
+                01:00
+              </option>
+              <option value="2">02:00</option>
+              <option value="3">03:00</option>
+              <option value="4">04:00</option>
+              <option value="5">05:00</option>
+              <option value="6">06:00</option>
+              <option value="7">07:00</option>
+              <option value="8">08:00</option>
+              <option value="9">09:00</option>
               <option value="10">10:00</option>
+              <option value="11">10:00</option>
+              <option value="12">12:00</option>
             </select>
           </div>
         </div>
