@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import NavbarIcon from "../NavbarIcon";
-import ProductList from "../ProductList";
-
 import { useParams } from "react-router-dom";
+import NavbarIcon from "../NavbarIcon";
+
 import { ArrowDown2, Heart } from "iconsax-react";
 import { ProductsContext } from "../../context/ProductsProvider";
+import DetailCarProductList from "./DetailCarProductList";
 
 import SortCategory from "../../common/SortCategory";
 import StarRating from "../../common/StarRating";
-import DetailCarProductList from "./DetailCarProductList";
 
 const DetailCar = () => {
   const [state, dispatch] = useContext(ProductsContext);

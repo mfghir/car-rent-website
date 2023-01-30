@@ -19,14 +19,17 @@ const StarRating = ({ rating }) => {
     <div className="">
       {[...Array(5)].map((item, key) => {
         return (
-          <span
-            key={key}
-            className={`ml-[2px] lg:scale-[1.7] lg:ml-[5px] inline-block ${
-              key < rating ? "text-[#fbad39]" : "text-[#90A3BF]"
-            } `}
-          >
-            &#9733;
-          </span>
+          <>
+            {key < rating ? (
+              <span className="ml-[2px] lg:scale-[1.5] lg:ml-[5px] inline-block text-[#fbad39]">
+                &#9733;
+              </span>
+            ) : (
+              <span className="ml-[2px] lg:scale-[1.5] lg:ml-[5px] inline-block text-[#90A3BF]">
+                &#9734;
+              </span>
+            )}
+          </>
         );
       })}
     </div>
