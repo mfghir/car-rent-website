@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className=" px-6 lg:px-[60px] lg:py-20 flex justify-between items-start flex-wrap">
+    <div className="mt-3 px-6 lg:px-[60px] lg:py-20 flex justify-between items-start flex-wrap">
       <div>
         <h1 className="text-[#3563E9] text-2xl lg:text-[32px]">MORENT</h1>
         <p className="w-[216px] lg:w-[292px] leading-6 mt-4 text-xs font-medium lg:text-base text-[#90A3BF] lg:text-[#13131399]">

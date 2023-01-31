@@ -7,6 +7,7 @@ import Footer from "./pages/Footer";
 import DetailCar from "./components/DetailCar/DetailCar";
 
 import Payment from "./components/Payment/Payment";
+import Panel from "./components/Panel/Panel";
 
 const App = () => {
   return (
@@ -18,9 +19,10 @@ const App = () => {
         <Route path="/detailCar/:id" element={<DetailCar />} />
 
         <Route path="/payment/" element={<Payment />} />
+        <Route path="/panel/" element={<Panel />} />
       </Routes>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

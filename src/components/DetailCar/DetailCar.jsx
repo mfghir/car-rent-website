@@ -2,17 +2,18 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NavbarIcon from "../NavbarIcon";
 
-import { ArrowDown2, Heart } from "iconsax-react";
+import { ArrowDown2, ArrowUp2, Heart } from "iconsax-react";
 import { ProductsContext } from "../../context/ProductsProvider";
 import DetailCarProductList from "./DetailCarProductList";
 
 import SortCategory from "../../common/SortCategory";
 import StarRating from "../../common/StarRating";
+import Footer from "../../pages/Footer";
 
 const DetailCar = () => {
   const [state, dispatch] = useContext(ProductsContext);
   const { id } = useParams();
-  
+
   const [readMore, setReadMore] = useState(false);
   const [showAll, setShowAll] = useState(false);
 
@@ -68,14 +69,18 @@ const DetailCar = () => {
 
                   <section className="mt-8 bg-white p-4 rounded-[10px] lg:w-[48%] lg:p-6 lg:mt-0">
                     <div className="flex justify-between items-center">
-                    <h1 className="text-[#1A202C] font-bold text-xl lg:text-[32px]">
-                      {name}
-                    </h1>
-                    <span className="hidden md:block">
-                    {fav ? <Heart color="#ED3F3F" variant="Bold"/> : <Heart color="#90A3BF"/> }
-                    </span>
-
+                      <h1 className="text-[#1A202C] font-bold text-xl lg:text-[32px]">
+                        {name}
+                      </h1>
+                      <span className="hidden md:block">
+                        {fav ? (
+                          <Heart color="#ED3F3F" variant="Bold" />
+                        ) : (
+                          <Heart color="#90A3BF" />
+                        )}
+                      </span>
                     </div>
+                    
                     <div className="flex justify-between items-center   mt-2">
                       <div className="flex justify-between items-center">
                         <span className="text-[#fbad39]  mr-[2px] lg:scale-[1.7] lg:mr-[5px] ">
@@ -223,10 +228,16 @@ const DetailCar = () => {
 
                   <div
                     onClick={() => setShowAll(!showAll)}
-                    className="flex justify-between items-center  flex-row mx-auto mt-6 px-5 py-2 text-[#90A3BF] w-fit rounded hover:bg-[#90A3BF] hover:text-[#1A202C] transition cursor-pointer"
+                    className="flex justify-between items-center flex-row mx-auto mt-6 px-5 py-2 text-[#90A3BF] w-fit rounded hover:bg-[#90A3BF] hover:text-[#1A202C] transition cursor-pointer"
                   >
-                    <span className="font-medium text-sm mr-2">Show All</span>
-                    <ArrowDown2 size="14" />
+                    <span className="font-medium text-sm mr-2">
+                      {showAll ? "Close All" : "Show All"}
+                    </span>
+                    {showAll ? (
+                      <ArrowUp2 size="14" />
+                    ) : (
+                      <ArrowDown2 size="14" />
+                    )}
                   </div>
                 </section>
               </div>
@@ -237,6 +248,8 @@ const DetailCar = () => {
           <DetailCarProductList />
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };

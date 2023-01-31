@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 
 import ProductList from "../components/ProductList";
 import Ads from "./Ads";
+import Footer from "./Footer";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <Ads />
       <DatePicker />
       <ProductList />
+      <Footer />
     </>
   );
 };

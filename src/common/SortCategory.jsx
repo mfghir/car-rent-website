@@ -1,12 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../context/ProductsProvider";
+import SortBox from "./SortBox";
 
 const SortCategory = () => {
   const [state, dispatch] = useContext(ProductsContext);
-  const isOpentHandler = () => {
-    dispatch({ type: "IS_OPEN" });
-    !state.isOpen == state.isOpen;
-  };
+
+  const sortCategoryName = state.carList
+    .filter((item) => item.typeCar)
+    .map((item) => item.typeCar)
+    .filter((val, index, self) => self.indexOf(val) === index);
+
+  const testTwo = state.carList
+    .filter((item) => item.typeCar)
+    .map((item) => item.typeCar);
+
+  const count = testTwo.reduce((accumulator, value) => {
+    return { ...accumulator, [value]: (accumulator[value] || 0) + 1 };
+  }, {});
+
+  // const t = Object.values(count).map((item) => item);
+
+  // const duplicate = testTwo.filter((obj, index, self) =>
+  // {return index !== self.findIndex(t=> t.typeCar === obj.typeCar && t.age === obj.age ) })
+
+  // const ent = Object.entries(testTwo)
+
+  // console.log(Object.values(testTwo));
 
   return (
     <div
@@ -22,27 +41,21 @@ const SortCategory = () => {
           TYPE
         </span>
 
-        {["Sport", "SUV", "MPV", "Sedan", "Coupe", "Hatchback"].map((item) => (
-          <div
-            className="flex items-center mb-4 font-semibold mt-7 text-base"
-            key={item}
-          >
-            <input
-              checked
-              id="default-checkbox"
-              type="checkbox"
-              value=""
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-[#90A3BF] rounded-lg"
-            />
-            <label
-              htmlFor="default-checkbox"
-              className="ml-2 text-sm text-[#596780]"
+        {[...new Set(sortCategoryName)].map((item) => {
+          return (
+            <div
+              className="flex items-center mb-4 font-semibold mt-7 text-base"
+              // key={item}
             >
-              {item}
-            </label>
-            <span className="text-[#90A3BF] pl-1">(10)</span>
-          </div>
-        ))}
+              <SortBox item={item} />
+            </div>
+          );
+        })}
+
+        {/* {Object.values(count).map((item) => (
+            <span className="text-[#90A3BF] pl-1">{item}</span>
+          ))} */}
+        {/* <span className="text-[#90A3BF] pl-1">{`(${t})`}</span> */}
       </section>
 
       <section className="mt-14">
@@ -56,7 +69,7 @@ const SortCategory = () => {
             key={item}
           >
             <input
-              checked
+              // checked
               id="default-checkbox"
               type="checkbox"
               value=""

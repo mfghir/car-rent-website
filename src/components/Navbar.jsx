@@ -7,7 +7,7 @@ import {
 } from "iconsax-react";
 import React, { useContext, useRef, useState } from "react";
 import { ProductsContext } from "../context/ProductsProvider";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [state, dispatch] = useContext(ProductsContext);
@@ -47,7 +47,10 @@ const Navbar = () => {
           onSubmit={submitHandler}
         >
           <div className="relative flex justify-between">
-            <button  type="submit"  className="absolute inset-y-0 left-0 flex items-center pl-3 cursor-pointer">
+            <button
+              type="submit"
+              className="absolute inset-y-0 left-0 flex items-center pl-3 cursor-pointer"
+            >
               <SearchNormal1 color="#596780" />
             </button>
 
@@ -76,7 +79,9 @@ const Navbar = () => {
           <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl bottom-6 left-5"></span>
           <Notification color="#596780" variant="Bold" className="md:mr-5 " />
         </div>
-        <Setting2 color="#596780" variant="Bold" className="md:mr-5" />
+        <Link to="/panel">
+          <Setting2 color="#596780" variant="Bold" className="md:mr-5" />
+        </Link>
 
         <img
           className="md:w-11 md:h-11"

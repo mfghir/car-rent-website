@@ -5,6 +5,7 @@ import { ProductsContext } from "../context/ProductsProvider";
 import DatePicker from "../components/DatePicker";
 import NavbarIcon from "../components/NavbarIcon";
 import ProductList from "../components/ProductList";
+import Footer from "./Footer";
 
 const Category = () => {
   const [state, dispatch] = useContext(ProductsContext);
@@ -19,6 +20,7 @@ const Category = () => {
           <ProductList />
         </div>
       </div>
+      <Footer />
     </>
   );
 };
