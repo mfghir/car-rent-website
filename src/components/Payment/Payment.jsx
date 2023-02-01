@@ -116,7 +116,7 @@ const Payment = () => {
           </ul>
         </section>
 
-        <div className="lg:w-3/5">  
+        <div className="lg:w-3/5">
           <section className="p-4 bg-white rounded-[10px] mt-8">
             <ul className="flex justify-between mt-6">
               <li>
@@ -132,8 +132,8 @@ const Payment = () => {
               </li>
             </ul>
 
-            <form className="mt-6">
-              <div className=" ">
+            <form className="mt-6 lg:flex lg:justify-between lg:flex-wrap lg:items-start">
+              <div className="lg:w-[48%] ">
                 <label
                   htmlFor="name"
                   className="text-[#1A202C] font-semibold text-sm lg:text-base"
@@ -149,7 +149,7 @@ const Payment = () => {
                 />
               </div>
 
-              <div className="mt-5">
+              <div className="mt-5 lg:mt-0 lg:w-[48%]">
                 <label
                   htmlFor="address"
                   className="text-[#1A202C] font-semibold text-sm lg:text-base"
@@ -165,7 +165,7 @@ const Payment = () => {
                 />
               </div>
 
-              <div className="mt-5">
+              <div className="mt-5 lg:mt-6 lg:w-[48%] ">
                 <label
                   htmlFor="phoneNumber"
                   className="text-[#1A202C] font-semibold text-sm lg:text-base"
@@ -181,7 +181,7 @@ const Payment = () => {
                 />
               </div>
 
-              <div className="mt-5">
+              <div className="mt-5 lg:mt-6 lg:w-[48%]">
                 <label
                   htmlFor="townOrCity"
                   className="text-[#1A202C] font-semibold text-sm lg:text-base"
@@ -214,25 +214,24 @@ const Payment = () => {
               </li>
             </ul>
 
-            <form className="mt-6">
-              <div className="flex items-center mb-4">
-                <input
-                  defaultChecked
-                  id="default-radio-1"
-                  type="radio"
-                  value=""
-                  name="default-radio"
-                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600"
-                />
-                <label
-                  htmlFor="default-radio-1"
-                  className="ml-2 text-base font-semibold text-[#1A202C]"
-                >
-                  Pick-Up
-                </label>
-              </div>
-
-              <div className="mt-5">
+            <div className="flex items-center mt-4 lg:mt-8">
+              <input
+                defaultChecked
+                id="default-radio-1"
+                type="radio"
+                value=""
+                name="default-radio"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600"
+              />
+              <label
+                htmlFor="default-radio-1"
+                className="ml-2 text-base font-semibold text-[#1A202C]"
+              >
+                Pick-Up
+              </label>
+            </div>
+            <form className="mt-6 lg:flex lg:justify-between lg:flex-wrap lg:items-start">
+              <div className="mt-5 lg:mt-6 lg:w-[48%]">
                 <label className="text-[#1A202C] font-semibold text-sm lg:text-base">
                   Locations
                 </label>
@@ -248,7 +247,7 @@ const Payment = () => {
                 </Select>
               </div>
 
-              <div className="mt-5">
+              <div className="mt-5 lg:mt-6 lg:w-[48%]">
                 <label className="text-[#1A202C] font-semibold text-sm lg:text-base">
                   Time
                 </label>
@@ -265,7 +264,7 @@ const Payment = () => {
                 </Select>
               </div>
 
-              <div className="mt-5">
+              <div className="mt-5 lg:mt-6 lg:w-[48%]">
                 <label className="text-[#1A202C] font-semibold text-sm lg:text-base">
                   Date
                 </label>
@@ -282,24 +281,23 @@ const Payment = () => {
               </div>
             </form>
 
-            <form className="mt-6">
-              <div className="flex items-center mb-4">
-                <input
-                  id="default-radio-2"
-                  type="radio"
-                  value=""
-                  name="default-radio"
-                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600"
-                />
-                <label
-                  htmlFor="default-radio-2"
-                  className="ml-2 text-base font-semibold text-[#1A202C]"
-                >
-                  Drop - Off
-                </label>
-              </div>
-
-              <div className="mt-5">
+            <div className="flex items-center mt-4 lg:mt-8">
+              <input
+                id="default-radio-2"
+                type="radio"
+                value=""
+                name="default-radio"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600"
+              />
+              <label
+                htmlFor="default-radio-2"
+                className="ml-2 text-base font-semibold text-[#1A202C]"
+              >
+                Drop - Off
+              </label>
+            </div>
+            <form className="mt-6 lg:flex lg:justify-between lg:flex-wrap lg:items-start">
+              <div className="mt-5 lg:mt-6 lg:w-[48%]">
                 <label className="text-[#1A202C] font-semibold text-sm lg:text-base">
                   Locations
                 </label>
@@ -315,7 +313,7 @@ const Payment = () => {
                 </Select>
               </div>
 
-              <div className="mt-5">
+              <div className="mt-5 lg:mt-6 lg:w-[48%]">
                 <label className="text-[#1A202C] font-semibold text-sm lg:text-base">
                   Time
                 </label>
@@ -332,7 +330,7 @@ const Payment = () => {
                 </Select>
               </div>
 
-              <div className="mt-5">
+              <div className="mt-5 lg:mt-6 lg:w-[48%]">
                 <label className="text-[#1A202C] font-semibold text-sm lg:text-base">
                   Date
                 </label>
@@ -370,14 +368,14 @@ const Payment = () => {
                 <div className="flex items-center">
                   <input
                     defaultChecked
-                    id="default-radio-1"
+                    id="creditCard"
                     type="radio"
                     value=""
                     name="default-radio"
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600"
                   />
                   <label
-                    htmlFor="default-radio-1"
+                    htmlFor="creditCard"
                     className="ml-2 text-base font-semibold text-[#1A202C]"
                   >
                     Credit Card
@@ -387,8 +385,8 @@ const Payment = () => {
                 <img src="https://i.postimg.cc/63bgfTgv/Visa.png" alt="Visa" />
               </div>
 
-              <form className="">
-                <div className="mt-5">
+              <form className="lg:flex lg:justify-between lg:flex-wrap lg:items-start">
+                <div className="mt-5 lg:mt-6 lg:w-[48%]">
                   <label
                     htmlFor="cardNumber"
                     className="text-[#1A202C] font-semibold text-sm lg:text-base"
@@ -404,7 +402,7 @@ const Payment = () => {
                   />
                 </div>
 
-                <div className="mt-5">
+                <div className="mt-5 lg:mt-6 lg:w-[48%]">
                   <label
                     htmlFor="cardHolder"
                     className="text-[#1A202C] font-semibold text-sm lg:text-base"
@@ -420,7 +418,7 @@ const Payment = () => {
                   />
                 </div>
 
-                <div className="mt-5">
+                <div className="mt-5 lg:mt-6 lg:w-[48%]">
                   <label
                     htmlFor="exprationDate"
                     className="text-[#1A202C] font-semibold text-sm lg:text-base"
@@ -436,7 +434,7 @@ const Payment = () => {
                   />
                 </div>
 
-                <div className="mt-5">
+                <div className="mt-5 lg:mt-6 lg:w-[48%]">
                   <label
                     htmlFor="CVC"
                     className="text-[#1A202C] font-semibold text-sm lg:text-base"
@@ -454,7 +452,7 @@ const Payment = () => {
               </form>
             </div>
 
-            <div className="flex justify-between items-center rounded-[10px] p-4 bg-[#F6F7F9] mt-5">
+            <div className="flex justify-between items-center rounded-[10px] p-4 bg-[#F6F7F9] mt-5 ">
               <div className="flex items-center">
                 <input
                   id="PayPal"
