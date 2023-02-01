@@ -214,6 +214,7 @@ const Payment = () => {
               </li>
             </ul>
 
+            {/* ------- ---------------------------------------------- Pick-Up*/}
             <div className="flex items-center mt-4 lg:mt-8">
               <input
                 defaultChecked
@@ -280,7 +281,7 @@ const Payment = () => {
                 </Select>
               </div>
             </form>
-
+            {/* ------- ----------------------------------------------Drop - Off */}
             <div className="flex items-center mt-4 lg:mt-8">
               <input
                 id="default-radio-2"
@@ -293,7 +294,7 @@ const Payment = () => {
                 htmlFor="default-radio-2"
                 className="ml-2 text-base font-semibold text-[#1A202C]"
               >
-                Drop - Off
+                Drop-Off
               </label>
             </div>
             <form className="mt-6 lg:flex lg:justify-between lg:flex-wrap lg:items-start">
