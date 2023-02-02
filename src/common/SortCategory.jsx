@@ -5,27 +5,16 @@ import SortBox from "./SortBox";
 const SortCategory = () => {
   const [state, dispatch] = useContext(ProductsContext);
 
-  const sortCategoryName = state.carList
-    .filter((item) => item.typeCar)
-    .map((item) => item.typeCar)
-    .filter((val, index, self) => self.indexOf(val) === index);
-
-  const testTwo = state.carList
+  const sortName = state.carList
     .filter((item) => item.typeCar)
     .map((item) => item.typeCar);
 
-  const count = testTwo.reduce((accumulator, value) => {
-    return { ...accumulator, [value]: (accumulator[value] || 0) + 1 };
+  let counts = sortName.reduce((acc, curr) => {
+    acc[curr] = (acc[curr] || 0) + 1;
+    return acc;
   }, {});
 
-  // const t = Object.values(count).map((item) => item);
-
-  // const duplicate = testTwo.filter((obj, index, self) =>
-  // {return index !== self.findIndex(t=> t.typeCar === obj.typeCar && t.age === obj.age ) })
-
-  // const ent = Object.entries(testTwo)
-
-  // console.log(Object.values(testTwo));
+  console.log(counts);
 
   return (
     <div
@@ -41,21 +30,15 @@ const SortCategory = () => {
           TYPE
         </span>
 
-        {[...new Set(sortCategoryName)].map((item) => {
-          return (
-            <div
-              className="flex items-center mb-4 font-semibold mt-7 text-base"
-              // key={item}
-            >
-              <SortBox item={item} />
-            </div>
-          );
-        })}
-
-        {/* {Object.values(count).map((item) => (
-            <span className="text-[#90A3BF] pl-1">{item}</span>
-          ))} */}
-        {/* <span className="text-[#90A3BF] pl-1">{`(${t})`}</span> */}
+        {Object.entries(counts).map((item) => (
+          <div
+            className="flex items-center mb-4 font-semibold mt-7 text-base"
+            key={item}
+          >
+            <SortBox item={item[0]} />
+            <span className="text-[#90A3BF] pl-1">({item[1]})</span>
+          </div>
+        ))}
       </section>
 
       <section className="mt-14">

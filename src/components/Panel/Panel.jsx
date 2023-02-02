@@ -7,16 +7,18 @@ import TopCarRental from "./TopCarRental";
 
 const Panel = () => {
   return (
-    <div className="bg-[#F6F7F9]">
+    <>
       <NavbarIcon />
-      <PanelMenu />
 
-      <div className="lg:flex lg:justify-between">
-        <DetailsRental />
-        <TopCarRental />
-      </div>
-      </div>
-    {/* </> */}
+      <section className="lg:flex lg:justify-between">
+        <PanelMenu />
+
+        <div className="lg:flex lg:justify-between p-6 lg:w-4/5">
+          <DetailsRental />
+          <TopCarRental />
+        </div>
+      </section>
+    </>
   );
 };
 

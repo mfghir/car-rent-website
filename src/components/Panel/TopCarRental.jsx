@@ -3,8 +3,8 @@ import React from "react";
 
 const TopCarRental = () => {
   return (
-    <>
-      <div className="m-6 mt-8 p-4 bg-white rounded-[10px] ">
+    <div className="bg-[#F6F7F9] lg:w-[48%]">
+      <div className=" mt-8 p-4 bg-white rounded-[10px] lg:mt-0">
         <section className="text-[#1A202C] flex justify-between items-center">
           <p className="text-[#1A202C] font-bold text-base lg:text-xl">
             Top 5 Car Rental
@@ -73,7 +73,7 @@ const TopCarRental = () => {
         </ul>
       </div>
 
-      <div className="m-6 mt-8 p-4 bg-white rounded-[10px] ">
+      <div className=" mt-8 p-4 bg-white rounded-[10px] ">
         <section className="flex justify-between items-center">
           <p className="text-[#1A202C] font-bold text-base lg:text-xl">
             Recent Transaction
@@ -187,7 +187,7 @@ const TopCarRental = () => {
           </li>
         </ul>
       </div>
-    </>
+    </div>
   );
 };
 
