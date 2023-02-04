@@ -10,10 +10,6 @@ const sumItems = (items) => {
   return { total };
 };
 
-
-
-
-
 const CartCalculater = (products) => {
   const itemsCounter = products.reduce(
     (total, product) => total + product.quantity,
@@ -34,12 +30,6 @@ const CartCalculater = (products) => {
 
   return { itemsCounter, total, offPrice, totalWithoutOff };
 };
-
-
-
-
-
-
 
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -62,9 +52,7 @@ export const reducer = (state, action) => {
     //   };
     // }
 
-
-
-        case "ADD_ITEM":
+    case "ADD_ITEM":
       if (!state.selectedItems.find((item) => item.id === action.payload.id)) {
         state.selectedItems.push({
           ...action.payload,
@@ -75,9 +63,8 @@ export const reducer = (state, action) => {
         ...state,
         selectedItems: [...state.selectedItems],
         ...sumItems(state.selectedItems),
-        checkout: false
+        checkout: false,
       };
-
 
     // case "ADD_TO_CART": {
     //   if (!state.cart.find((item) => item.id === action.payload.id)) {
@@ -93,9 +80,6 @@ export const reducer = (state, action) => {
     //     checkout: false,
     //   };
     // }
-
-
-
 
     // case "INCREASE": {
     //   const indexI = state.cart.findIndex(
@@ -178,18 +162,68 @@ export const reducer = (state, action) => {
     //     favOpen: !state.favOpen,
     //   };
 
-    // case "SORT": {
-    //   const categoryI = [...state.productsData];
-    //   const index = categoryI.filter(
-    //     (item) => item.category.id === action.payload.id
-    //   );
+    case "SORT": {
+      // const categoryI = [...state.carList];
+      // const index = categoryI.filter(
+      //   (item) => item.category.id === action.payload.id
+      // );
+      // if (action.payload.id === 0) {
+      //   return { ...state, categorySort: [] };
+      // } else {
+      //   return { ...state, categorySort: index };
+      // }
+      // return{
+      //   ...state,
+      //   carList : state.carList.sort((a,b)=>{
+      //     if(action.payload === 'category'){
+      //       return a.category > b.category ? 1 : -1
+      //     }
+      //   })
+      // }
+    }
 
-    //   if (action.payload.id === 0) {
-    //     return { ...state, categorySort: [] };
-    //   } else {
-    //     return { ...state, categorySort: index };
-    //   }
-    // }
+    case "SELECT_PRODUCT": {
+      // const selectedProductIds = state.carList.map(product => product.typeCar);
+
+      // console.log("state.carList" ,state.carList.filter((item) => item.typeCar === car));
+      // const categoryI = [...state.carList]; 
+      // const selectedCars = categoryI.filter((car) => car.typeCar === action.payload);
+      // return {
+      //   ...state,
+      //   carList: {...state , carList : selectedCars}
+      // };
+
+      // if (state.carList.includes(action.payload)) {
+      //   if (state.categorySort.includes(action.payload)) {
+      //     return {
+      //       ...state,
+      //       carList: state.carList.filter(
+      //         (product) => product.typeCar === action.payload
+      //       ),
+      //     };
+      //   } else {
+      //     return {
+      //       ...state,
+      //       carList: [...state.categorySort, action.payload],
+      //     };
+      //   }
+      // }
+
+      // if(state.carList.typeCar === action.payload){
+      //   return console.log("true.....")
+      // }
+
+      const categoryI = [...state.carList];
+      const index = categoryI.filter(
+        (item) => item.typeCar === action.payload
+      );
+
+      if (action.payload === "") {
+        return { ...state, sortedCars:categoryI };
+      } else {
+        return { ...state, sortedCars: index };
+      }
+    }
 
     // case "PRICE_SORT": {
     //   const val = action.payload.value;
@@ -219,8 +253,7 @@ export const reducer = (state, action) => {
           p.name.toLowerCase().includes(val.toLowerCase())
         );
         // return filterPro;
-      return { ...state, filteredCars: filterPro };
-
+        return { ...state, filteredCars: filterPro };
       }
       // return { ...state, filteredCars: filterPro };
 
@@ -229,8 +262,6 @@ export const reducer = (state, action) => {
 
     case "GET_CAR_DATA":
       return { ...state, carList: action.payload };
-
-
 
     default:
       return state;

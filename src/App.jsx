@@ -2,9 +2,9 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 
-import Category from "./pages/Category";
 import Footer from "./pages/Footer";
 import DetailCar from "./components/DetailCar/DetailCar";
+import Category from "./components/Category/Category";
 
 import Payment from "./components/Payment/Payment";
 import Panel from "./components/Panel/Panel";

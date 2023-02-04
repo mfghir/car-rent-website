@@ -10,7 +10,9 @@ const initialState = {
   selectedItems: [],
 
   filteredCars :[],
+  sortedCars:[],
 
+  
   itemsCounter: 0,
   total: 0,
   totalWithoutOff: 0,

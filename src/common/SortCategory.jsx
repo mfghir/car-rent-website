@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import { Checkbox } from "@material-tailwind/react";
+import React, { useContext, useState } from "react";
 import { ProductsContext } from "../context/ProductsProvider";
-import SortBox from "./SortBox";
 
 const SortCategory = () => {
   const [state, dispatch] = useContext(ProductsContext);
 
   const sortName = state.carList
-    .filter((item) => item.typeCar)
+    ?.filter((item) => item.typeCar)
     .map((item) => item.typeCar);
 
   let counts = sortName.reduce((acc, curr) => {
@@ -14,8 +14,11 @@ const SortCategory = () => {
     return acc;
   }, {});
 
-  console.log(counts);
-
+  const handleCheckboxChange = (car) => {
+    // console.log("state.carList" ,state.carList.filter((item) => item.typeCar === car));
+    dispatch({ type: "SELECT_PRODUCT", payload: car });
+    // console.log(car);
+  };
   return (
     <div
       className={`w-2/3 h-full overflow-y-scroll fixed z-10 top-0 bg-white  transition-transform  md:translate-x-0 md:w-1/4 md:top-32 md:static md:h-full p-8
@@ -34,8 +37,15 @@ const SortCategory = () => {
           <div
             className="flex items-center mb-4 font-semibold mt-7 text-base"
             key={item}
+            // value={item[0]}
+            // onChange={sortHandler}
+            // onChange={() => handleCheckboxChange(item[0])}
           >
-            <SortBox item={item[0]} />
+            <Checkbox
+              label={item[0]}
+              containerProps={item[0]}
+              onChange={() => handleCheckboxChange(item[0])}
+            />
             <span className="text-[#90A3BF] pl-1">({item[1]})</span>
           </div>
         ))}
@@ -91,3 +101,41 @@ const SortCategory = () => {
 };
 
 export default SortCategory;
+
+//Functional Component
+
+// const ProductList = () => {
+//   const dispatch = useDispatch();
+
+//   // useEffect(() => {
+//   //   dispatch({
+//   //     type: "SET_PRODUCTS",
+//   //     payload: [
+//   //       { id: 1, name: "Product 1" },
+//   //       { id: 2, name: "Product 2" },
+//   //       { id: 3, name: "Product 3" },
+//   //     ],
+//   //   });
+//   // }, [dispatch]);
+
+//   const products = useSelector((state) => state.products);
+//   const handleCheckboxChange = (productId) =>
+//     dispatch({ type: "SELECT_PRODUCT", payload: productId });
+
+//   return (
+//     <div>
+//       <ul>
+//         {products &&
+//           products.map((product) => (
+//             <li key={product.id}>
+//               <input
+//                 type="checkbox"
+//                 onChange={() => handleCheckboxChange(product)}
+//               />
+//               <span>{product.name}</span>
+//             </li>
+//           ))}
+//       </ul>
+//     </div>
+//   );
+// };
