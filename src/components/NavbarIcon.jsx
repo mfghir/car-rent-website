@@ -7,7 +7,7 @@ import {
   Setting4,
 } from "iconsax-react";
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { ProductsContext } from "../context/ProductsProvider";
 
 const NavbarIcon = () => {
@@ -56,9 +56,9 @@ const NavbarIcon = () => {
             <Notification color="#596780" variant="Bold" className="md:mr-5 " />
           </div>
 
-          <Link to="/panel">
+          <NavLink to="/panel">
             <Setting2 color="#596780" variant="Bold" className="md:mr-5" />
-          </Link>
+          </NavLink>
           <img
             className="md:w-11 md:h-11"
             src="https://upcdn.io/kW15b2b/raw/Imageprofile-46DF.png"

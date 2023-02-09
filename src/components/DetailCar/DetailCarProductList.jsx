@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ProductsContext } from "../../context/ProductsProvider";
 
 import Slider from "../../common/Slider";
@@ -18,9 +18,9 @@ const DetailCarProductList = () => {
       {/* ------------------------------- Popular Car */}
       <div className="flex justify-between items-center mb-5 lg:mb-[30px]">
         <p className="text-[#90A3BF] text-sm font-semibold">Popular Car</p>
-        <Link>
+        <NavLink>
           <p className="text-[#3563E9] text-xs font-semibold">View All</p>
-        </Link>
+        </NavLink>
       </div>
       <Slider data={popularCarList} />
 
@@ -29,9 +29,9 @@ const DetailCarProductList = () => {
         <p className="text-[#90A3BF] text-sm font-semibold">
           Recomendation Car
         </p>
-        <Link>
+        <NavLink>
           <p className="text-[#3563E9] text-xs font-semibold">View All</p>
-        </Link>
+        </NavLink>
       </div>
       <Slider data={recommandCarList} />
     </div>

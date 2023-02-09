@@ -7,7 +7,7 @@ import {
 } from "iconsax-react";
 import React, { useContext, useRef, useState } from "react";
 import { ProductsContext } from "../context/ProductsProvider";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [state, dispatch] = useContext(ProductsContext);
@@ -79,9 +79,9 @@ const Navbar = () => {
           <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl bottom-6 left-5"></span>
           <Notification color="#596780" variant="Bold" className="md:mr-5 " />
         </div>
-        <Link to="/panel">
+        <NavLink to="/panel">
           <Setting2 color="#596780" variant="Bold" className="md:mr-5" />
-        </Link>
+        </NavLink>
 
         <img
           className="md:w-11 md:h-11"

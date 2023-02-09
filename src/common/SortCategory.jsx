@@ -9,16 +9,55 @@ const SortCategory = () => {
     ?.filter((item) => item.typeCar)
     .map((item) => item.typeCar);
 
-  let counts = sortName.reduce((acc, curr) => {
+  const carsKind = sortName.reduce((acc, curr) => {
     acc[curr] = (acc[curr] || 0) + 1;
     return acc;
   }, {});
 
-  const handleCheckboxChange = (car) => {
-    // console.log("state.carList" ,state.carList.filter((item) => item.typeCar === car));
-    dispatch({ type: "SELECT_PRODUCT", payload: car });
-    // console.log(car);
+  const sortCapacity = state.carList
+    ?.filter((item) => item.capacity)
+    .map((item) => item.capacity);
+  const capacity = sortCapacity.reduce((acc, curr) => {
+    acc[curr] = (acc[curr] || 0) + 1;
+    return acc;
+  }, {});
+
+  const sortHandler = (e) => {
+    if (e.target.checked === false) {
+      e.target.value === "";
+      dispatch({ type: "SORT_CATEGOTY_CAR", payload: e.target });
+    } else {
+      dispatch({ type: "SORT_CATEGOTY_CAR", payload: e.target });
+    }
   };
+
+  const capacityHandler = (e) => {
+    if (e.target.checked === false) {
+      e.target.value === "";
+      dispatch({ type: "SORT_CAPCITY_CAR", payload: e.target });
+    } else {
+      dispatch({ type: "SORT_CAPCITY_CAR", payload: e.target });
+    }
+  };
+
+const [rangeInp, setRangeInp] = useState(100);
+
+const priceHandler = (e) => {
+    // setRangeInp(e.target.value)
+    console.log(e.target.value)
+
+    // if (e.target.value === false) {
+    //   e.target.value === "";
+    //   dispatch({ type: "SORT_PRICE_CAR", payload: e.target.value });
+    // } else {
+    //   dispatch({ type: "SORT_PRICE_CAR", payload: e.target.value });
+    // }
+
+      dispatch({ type: "SORT_PRICE_CAR", minPrice: e.target.value[0] ,maxPrice: e.target.value[1] });
+
+  };
+
+
   return (
     <div
       className={`w-2/3 h-full overflow-y-scroll fixed z-10 top-0 bg-white  transition-transform  md:translate-x-0 md:w-1/4 md:top-32 md:static md:h-full p-8
@@ -33,19 +72,29 @@ const SortCategory = () => {
           TYPE
         </span>
 
-        {Object.entries(counts).map((item) => (
+        {Object.entries(carsKind).map((item) => (
           <div
             className="flex items-center mb-4 font-semibold mt-7 text-base"
             key={item}
-            // value={item[0]}
-            // onChange={sortHandler}
-            // onChange={() => handleCheckboxChange(item[0])}
           >
-            <Checkbox
+            {/* <Checkbox
               label={item[0]}
               containerProps={item[0]}
-              onChange={() => handleCheckboxChange(item[0])}
-            />
+              value={item[0]}
+              onChange={() => sortHandler(item[0])}
+            /> */}
+            <div>
+              <input
+                id="ch"
+                type="checkbox"
+                value={item[0]}
+                onChange={sortHandler}
+                className="w-4 h-4 text-blue-600 focus:accent-[#3563E9] focus:border-transparent border-[#90A3BF] rounded-lg"
+              />
+              <label htmlFor="ch" className="ml-2 text-sm text-[#596780]">
+                {item[0]}
+              </label>
+            </div>
             <span className="text-[#90A3BF] pl-1">({item[1]})</span>
           </div>
         ))}
@@ -56,25 +105,25 @@ const SortCategory = () => {
           CAPACITY
         </span>
 
-        {["2 Person", "4 Person", "6 Person", "8 Person"].map((item) => (
+        {Object.entries(capacity).map((item) => (
           <div
             className="flex items-center mb-4 font-semibold mt-7 text-base"
             key={item}
           >
             <input
-              // checked
               id="default-checkbox"
               type="checkbox"
-              value=""
+              value={item[0]}
+              onChange={capacityHandler}
               className="w-4 h-4 text-blue-600 focus:accent-[#3563E9] focus:border-transparent border-[#90A3BF] rounded-lg"
             />
             <label
               htmlFor="default-checkbox"
               className="ml-2 text-sm text-[#596780]"
             >
-              {item}
+              {item[0]}people
             </label>
-            <span className="text-[#90A3BF] pl-1">(10)</span>
+            <span className="text-[#90A3BF] pl-1">({item[1]})</span>
           </div>
         ))}
       </section>
@@ -89,10 +138,12 @@ const SortCategory = () => {
             id="default-range"
             type="range"
             step="10"
-            min="1"
-            max="200"
-            value="100"
-            className="w-full h-2 bg-[#90A3BF] appearance-none rounded  cursor-pointer  focus:outline-none focus:ring-0 focus:shadow-none"
+            min={state.minPrice}
+            max={state.maxPrice}
+            // max="200"
+            // value="100"
+            onChange={priceHandler}
+            className="w-full h-2 bg-[#90A3BF]  accent-[#3563E9] appearance-none rounded  cursor-pointer  focus:outline-none focus:ring-0 focus:shadow-none"
           />
         </div>
       </section>

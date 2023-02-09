@@ -182,48 +182,48 @@ export const reducer = (state, action) => {
       // }
     }
 
-    case "SELECT_PRODUCT": {
-      // const selectedProductIds = state.carList.map(product => product.typeCar);
-
-      // console.log("state.carList" ,state.carList.filter((item) => item.typeCar === car));
-      // const categoryI = [...state.carList]; 
-      // const selectedCars = categoryI.filter((car) => car.typeCar === action.payload);
-      // return {
-      //   ...state,
-      //   carList: {...state , carList : selectedCars}
-      // };
-
-      // if (state.carList.includes(action.payload)) {
-      //   if (state.categorySort.includes(action.payload)) {
-      //     return {
-      //       ...state,
-      //       carList: state.carList.filter(
-      //         (product) => product.typeCar === action.payload
-      //       ),
-      //     };
-      //   } else {
-      //     return {
-      //       ...state,
-      //       carList: [...state.categorySort, action.payload],
-      //     };
-      //   }
-      // }
-
-      // if(state.carList.typeCar === action.payload){
-      //   return console.log("true.....")
-      // }
-
+    case "SORT_CATEGOTY_CAR": {
       const categoryI = [...state.carList];
-      const index = categoryI.filter(
-        (item) => item.typeCar === action.payload
+      const filtered = categoryI.filter((car) =>
+        car.typeCar.includes(action.payload.value)
       );
 
-      if (action.payload === "") {
-        return { ...state, sortedCars:categoryI };
+      if (action.payload.checked === false || action.payload.value === "") {
+        return { ...state, sortedCars: [] };
       } else {
-        return { ...state, sortedCars: index };
+        return { ...state, sortedCars: filtered };
       }
     }
+
+    case "SORT_CAPCITY_CAR": {
+      const categoryI = [...state.carList];
+      const num = parseInt(action.payload.value);
+      const filtered = categoryI.filter((item) => item.capacity === num);
+
+      if (action.payload.checked === false || action.payload.value === "") {
+        return { ...state, sortedCars: [] };
+      } else {
+        return { ...state, sortedCars: filtered };
+      }
+    }
+
+    case "SORT_PRICE_CAR": {
+      const categoryI = [...state.carList];
+      const num = parseInt(action.payload);
+      const filtered = categoryI.filter((item) => item.price >= action.minPrice && item.price <= action.maxPrice );
+
+      
+        return { ...state, sortedCars: filtered , minPrice : action.minPrice , maxPrice : action.maxPrice };
+
+
+
+      // if (action.payload.value === "") {
+      //   return { ...state, sortedCars: [] };
+      // } else {
+      //   return { ...state, sortedCars: filtered };
+      // }
+    }
+
 
     // case "PRICE_SORT": {
     //   const val = action.payload.value;

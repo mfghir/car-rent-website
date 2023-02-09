@@ -25,12 +25,12 @@ const Category = () => {
 
           <DatePicker />
 
-          {state.sortedCars ? (
+          {state.sortedCars.length === 0 ? (
             <ProductList />
           ) : (
             <section className="mx-8 grid grid-cols-1 md:grid-cols-2 md:gap-5 xl:grid-cols-3 xl:gap-8 ">
-              {state.sortedCars?.map((item) => (
-                <CartCategory item={item} />
+              {state.sortedCars?.map((item,index) => (
+                <CartCategory item={item} key={index} />
               ))}
             </section>
           )}

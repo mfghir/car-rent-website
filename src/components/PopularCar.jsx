@@ -1,6 +1,6 @@
 import { GasStation, Heart, Profile2User, Story } from "iconsax-react";
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ProductsContext } from "../context/ProductsProvider";
 
 const PopularCar = ({ item }) => {
@@ -80,14 +80,14 @@ const PopularCar = ({ item }) => {
           </p>
         </div>
 
-        <Link to="/payment">
+        <NavLink to="/payment">
           <button
             className="bg-[#3563E9] rounded-[4px] text-white text-xs lg:text-base font-semibold px-4 py-[10px] lg:px-5 "
             onClick={() => dispatch({ type: "ADD_ITEM", payload: item })}
           >
             Rental Now
           </button>
-        </Link>
+        </NavLink>
       </div>
     </div>
   );
