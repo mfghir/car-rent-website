@@ -11,8 +11,6 @@ const initialState = {
 
   filteredCars :[],
   sortedCars:[],
-  minPrice : 0,
-  maxPrice : 200,
 
   
   itemsCounter: 0,

@@ -12,15 +12,15 @@ import { ThemeProvider } from "@material-tailwind/react";
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <ThemeProvider>
   <QueryClientProvider client={queryClient}>
     <ProductsProvider>
-      <BrowserRouter>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      </BrowserRouter>
+      <ThemeProvider>
+        <BrowserRouter>
+          <React.StrictMode>
+            <App />
+          </React.StrictMode>
+        </BrowserRouter>
+      </ThemeProvider>
     </ProductsProvider>
   </QueryClientProvider>
-  </ThemeProvider>
 );

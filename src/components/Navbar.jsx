@@ -12,27 +12,10 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const [state, dispatch] = useContext(ProductsContext);
   const [searchTerm, setSearchTerm] = useState("");
-  // const nameRef = useRef();
-
-  // const handleChange = (e) => {
-  //   e.preventDefault();
-  //   setSearchTerm(e.target.value);
-  // };
 
   const submitHandler = (e) => {
     e.preventDefault();
-
     dispatch({ type: "SEARCH", payload: searchTerm });
-  };
-
-  const filterCoins = (e) => {
-    // const result = state.filteredCars.filter((coin) =>
-    //     coin.name.toLowerCase().includes(search.toLowerCase())
-    // );
-    // dispatch({
-    //   type: "SEARCH",
-    //   payload: e.target.value,
-    // });
   };
 
   return (
@@ -55,12 +38,11 @@ const Navbar = () => {
             </button>
 
             <input
-              // ref={nameRef}
               onChange={(e) => setSearchTerm(e.target.value)}
-              // value={searchTerm}
+              value={searchTerm}
               type="search"
-              className="block w-full p-4 pl-10 text-sm text-[#596780] border border-[#C3D4E966] rounded-[70px]  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               placeholder="Search something here"
+              className="block w-full p-4 pl-10 text-sm text-[#596780] border border-[#C3D4E966] rounded-[70px]  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             />
 
             <div className="absolute inset-y-0 right-0 flex items-center mr-3 ">
@@ -97,17 +79,23 @@ const Navbar = () => {
       />
 
       {/* <> */}
-      <form className="mt-8 h-12 md:hidden">
+      <form className="mt-8 h-12 md:hidden " onSubmit={submitHandler}>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <SearchNormal1 color="#596780" className="" />
+            <button
+              type="submit"
+              className="absolute inset-y-0 left-0 flex items-center pl-3 cursor-pointer"
+            >
+              <SearchNormal1 color="#3e7deb" />
+            </button>
           </div>
           <input
+            onChange={(e) => setSearchTerm(e.target.value)}
+            value={searchTerm}
             type="search"
             id="default-search"
-            className="block w-full p-4 pl-10 text-sm text-[#596780] border border-[#C3D4E966] rounded-[10px]  focus:ring-blue-500 focus:border-blue-500"
             placeholder="Search something here"
-            required
+            className="block w-full p-4 pl-10 text-sm text-[#596780] border border-[#C3D4E966] rounded-[10px]  focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
       </form>

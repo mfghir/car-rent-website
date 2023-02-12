@@ -4,6 +4,7 @@ import { ProductsContext } from "../context/ProductsProvider";
 
 const SortCategory = () => {
   const [state, dispatch] = useContext(ProductsContext);
+  const [rangeInp, setRangeInp] = useState(100);
 
   const sortName = state.carList
     ?.filter((item) => item.typeCar)
@@ -17,6 +18,7 @@ const SortCategory = () => {
   const sortCapacity = state.carList
     ?.filter((item) => item.capacity)
     .map((item) => item.capacity);
+
   const capacity = sortCapacity.reduce((acc, curr) => {
     acc[curr] = (acc[curr] || 0) + 1;
     return acc;
@@ -40,23 +42,10 @@ const SortCategory = () => {
     }
   };
 
-const [rangeInp, setRangeInp] = useState(100);
-
-const priceHandler = (e) => {
-    // setRangeInp(e.target.value)
-    console.log(e.target.value)
-
-    // if (e.target.value === false) {
-    //   e.target.value === "";
-    //   dispatch({ type: "SORT_PRICE_CAR", payload: e.target.value });
-    // } else {
-    //   dispatch({ type: "SORT_PRICE_CAR", payload: e.target.value });
-    // }
-
-      dispatch({ type: "SORT_PRICE_CAR", minPrice: e.target.value[0] ,maxPrice: e.target.value[1] });
-
+  const priceHandler = (e) => {
+    setRangeInp(e.target.value);
+    dispatch({ type: "SORT_PRICE_CAR", payload: rangeInp });
   };
-
 
   return (
     <div
@@ -137,14 +126,16 @@ const priceHandler = (e) => {
           <input
             id="default-range"
             type="range"
-            step="10"
-            min={state.minPrice}
-            max={state.maxPrice}
-            // max="200"
-            // value="100"
+            step="1"
+            min="10"
+            max="100"
+            value={rangeInp}
             onChange={priceHandler}
             className="w-full h-2 bg-[#90A3BF]  accent-[#3563E9] appearance-none rounded  cursor-pointer  focus:outline-none focus:ring-0 focus:shadow-none"
           />
+          <p className="text-[#596780] font-semibold text-xl">
+            Max. ${rangeInp}.00
+          </p>
         </div>
       </section>
     </div>

@@ -4,6 +4,7 @@ import { ProductsContext } from "../context/ProductsProvider";
 
 import RecommandCar from "./RecommandCar";
 import Slider from "../common/Slider";
+import CartCategory from "./Category/CartCategory";
 
 const ProductList = () => {
   const [state, dispatch] = useContext(ProductsContext);
@@ -16,6 +17,16 @@ const ProductList = () => {
 
   return (
     <div className="mt-8 px-6 lg:px-16 ">
+      {filteredCars && (
+        <div className="bg-gray-300  w-full rounded-xl my-7">
+          <section className="mx-8 grid grid-cols-1 md:grid-cols-2 md:gap-5 xl:grid-cols-3 xl:gap-8  pb-4">
+            {state.filteredCars.map((item) => (
+              <CartCategory item={item} />
+            ))}
+          </section>
+        </div>
+      )}
+
       {/* ------------------------------- Popular Car */}
       <div className="flex justify-between items-center mb-5 lg:mb-[30px]">
         <p className="text-[#90A3BF] text-sm font-semibold">Popular Car</p>
@@ -24,11 +35,6 @@ const ProductList = () => {
         </NavLink>
       </div>
 
-      <div className="bg-red-200 h-10 w-full">
-        {state.filteredCars.map((item) => {
-          <p>{item.name}</p>;
-        })}
-      </div>
       <Slider data={popularCarList} />
 
       {/* --------------------------- Recomendation Car */}
