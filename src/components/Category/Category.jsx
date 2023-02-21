@@ -18,12 +18,6 @@ const Category = () => {
       <div className="md:flex md:flex-wrap md:justify-between ">
         <SortCategory />
         <div className="md:w-3/4">
-          {/* <section className="bg-blue-200 w-full h-9">
-            ddd
-            {/* {state.carList?.map(item=> <p>{item.name}</p> )} */}
-          {/* {state.sortedCars?.map(item=> <p>{item.name}</p> )} */}
-          {/* </section> */}
-
           <DatePicker />
 
           {state.sortedCars.length === 0 ? (

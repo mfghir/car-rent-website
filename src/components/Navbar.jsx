@@ -1,3 +1,7 @@
+import React, { useContext, useState } from "react";
+import { ProductsContext } from "../context/ProductsProvider";
+import { NavLink } from "react-router-dom";
+
 import {
   Heart,
   Notification,
@@ -5,9 +9,6 @@ import {
   Setting2,
   Setting4,
 } from "iconsax-react";
-import React, { useContext, useRef, useState } from "react";
-import { ProductsContext } from "../context/ProductsProvider";
-import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [state, dispatch] = useContext(ProductsContext);
@@ -78,7 +79,6 @@ const Navbar = () => {
         alt="Imageprofile"
       />
 
-      {/* <> */}
       <form className="mt-8 h-12 md:hidden " onSubmit={submitHandler}>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -101,11 +101,10 @@ const Navbar = () => {
       </form>
 
       <NavLink to="/category" className="md:hidden">
-        <div className="bg-blue-300 w-12 h-12 mt-8 border border-[#C3D4E966] rounded-[10px] flex justify-center items-center">
+        <div className="w-12 h-12 mt-8 border border-[#C3D4E966] rounded-[10px] flex justify-center items-center">
           <Setting4 color="#596780" />
         </div>
       </NavLink>
-      {/* </> */}
     </div>
   );
 };

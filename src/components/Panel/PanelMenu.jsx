@@ -12,7 +12,6 @@ import {
   Setting,
   Sun1,
 } from "iconsax-react";
-import React from "react";
 
 const PanelMenu = () => {
   return (

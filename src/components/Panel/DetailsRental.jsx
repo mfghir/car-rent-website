@@ -1,4 +1,3 @@
-import React from "react";
 import { Option, Select } from "@material-tailwind/react";
 import DatePicker from "../DatePicker";
 

@@ -1,6 +1,7 @@
-import { Option, Select } from "@material-tailwind/react";
 import React, { useContext } from "react";
+import { Option, Select } from "@material-tailwind/react";
 import { ProductsContext } from "../../context/ProductsProvider";
+
 import PaymentNavbar from "./PaymentNavbar";
 
 const Payment = () => {

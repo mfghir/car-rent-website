@@ -1,3 +1,4 @@
+import { Link, NavLink } from "react-router-dom";
 import {
   Heart,
   Notification,
@@ -5,8 +6,6 @@ import {
   Setting2,
   Setting4,
 } from "iconsax-react";
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
 
 const PaymentNavbar = () => {
   return (
@@ -28,7 +27,7 @@ const PaymentNavbar = () => {
         <Link to="/panel">
           <Setting2 color="#596780" variant="Bold" className="md:mr-5" />
         </Link>
-        
+
         <img
           className="md:w-11 md:h-11"
           src="https://upcdn.io/kW15b2b/raw/Imageprofile-46DF.png"

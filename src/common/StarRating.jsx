@@ -1,5 +1,3 @@
-import React from "react";
-
 const StarRating = ({ rating }) => {
   //   const stars = [];
 
@@ -16,7 +14,7 @@ const StarRating = ({ rating }) => {
   //   }
 
   return (
-    <div className="">
+    <div>
       {[...Array(5)].map((item, key) => {
         return (
           <>

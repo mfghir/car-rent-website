@@ -1,5 +1,4 @@
 import { More } from "iconsax-react";
-import React from "react";
 
 const TopCarRental = () => {
   return (

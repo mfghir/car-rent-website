@@ -1,6 +1,7 @@
-import { GasStation, Heart, Profile2User, Story } from "iconsax-react";
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { GasStation, Heart, Profile2User, Story } from "iconsax-react";
+
 import { ProductsContext } from "../context/ProductsProvider";
 
 const PopularCar = ({ item }) => {

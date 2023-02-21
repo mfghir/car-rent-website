@@ -1,3 +1,7 @@
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { ProductsContext } from "../context/ProductsProvider";
+
 import {
   Heart,
   HambergerMenu,
@@ -6,16 +10,19 @@ import {
   Setting2,
   Setting4,
 } from "iconsax-react";
-import React, { useContext } from "react";
-import {  NavLink } from "react-router-dom";
-import { ProductsContext } from "../context/ProductsProvider";
 
 const NavbarIcon = () => {
-  // const [isOpen, setIsOpen] = useState(false);
   const [state, dispatch] = useContext(ProductsContext);
   const isOpentHandler = () => {
     dispatch({ type: "IS_OPEN" });
     !state.isOpen == state.isOpen;
+  };
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch({ type: "SEARCH", payload: searchTerm });
   };
 
   return (
@@ -28,13 +35,18 @@ const NavbarIcon = () => {
             </h1>
           </NavLink>
 
-          <form className="lg:w-96 md:w-80 h-12 lg:ml-16 md:ml-8 md:block hidden">
+          <form
+            className="lg:w-96 md:w-80 h-12 lg:ml-16 md:ml-8 md:block hidden"
+            onSubmit={submitHandler}
+          >
             <div className="relative flex justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <SearchNormal1 color="#596780" />
               </div>
 
               <input
+                onChange={(e) => setSearchTerm(e.target.value)}
+                value={searchTerm}
                 type="search"
                 className="block w-full p-4 pl-10 text-sm text-[#596780] border border-[#C3D4E966] rounded-[70px]  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Search something here"
@@ -70,13 +82,7 @@ const NavbarIcon = () => {
       {/* ----------------mobile------------------------- */}
       <div className="flex justify-between items-center flex-wrap py-8 px-6 bg-white md:hidden lg:hidden border-b border-[#C3D4E966]">
         <section className="md:hidden w-full flex justify-between mb-8">
-          <HambergerMenu
-            size="24"
-            color="#596780"
-            className="cursor-pointer"
-
-            // onClick={() => console.log('first')}
-          />
+          <HambergerMenu size="24" color="#596780" className="cursor-pointer" />
           <img
             className="w-7 h-7"
             src="https://upcdn.io/kW15b2b/raw/Imageprofile-46DF.png"
@@ -90,17 +96,17 @@ const NavbarIcon = () => {
           </h1>
         </NavLink>
 
-        <form className="mt-8 h-12 md:hidden">
+        <form className="mt-8 h-12 md:hidden" onSubmit={submitHandler}>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <SearchNormal1 color="#596780" className="" />
             </div>
             <input
+              onChange={(e) => setSearchTerm(e.target.value)}
+              value={searchTerm}
               type="search"
-              id="default-search"
               className="block w-full p-4 pl-10 text-sm text-[#596780] border border-[#C3D4E966] rounded-[10px]  focus:ring-blue-500 focus:border-blue-500"
               placeholder="Search something here"
-              required
             />
           </div>
         </form>

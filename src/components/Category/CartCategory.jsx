@@ -8,7 +8,7 @@ const CartCategory = ({ item }) => {
   const { name, kind, fav, img, fuel, capacity, price, offPrice } = item;
 
   return (
-
+    <>
       <NavLink to={`/detailCar/${item.id}`}>
         <div className="rounded-[10px] bg-white p-2 mt-5 ">
           <div className="flex justify-between items-center ">
@@ -135,7 +135,7 @@ const CartCategory = ({ item }) => {
           </div>
         </div>
       </NavLink>
-    // </section>
+    </>
   );
 };
 

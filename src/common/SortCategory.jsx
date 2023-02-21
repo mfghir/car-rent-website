@@ -1,5 +1,5 @@
-import { Checkbox } from "@material-tailwind/react";
 import React, { useContext, useState } from "react";
+import { Checkbox } from "@material-tailwind/react";
 import { ProductsContext } from "../context/ProductsProvider";
 
 const SortCategory = () => {
