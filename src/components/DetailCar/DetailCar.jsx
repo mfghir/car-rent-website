@@ -147,7 +147,7 @@ const DetailCar = () => {
                       <div>
                         <section className="flex justify-between items-end font-bold">
                           <div className="text-[#1A202C] text-xl  lg:text-[28px]">
-                            ${offPrice}.00
+                          ${offPrice === 0 ? price : offPrice}.00/
                           </div>
                           <span className="text-[#90A3BF] text-xs lg:text-base">
                             days
@@ -155,7 +155,7 @@ const DetailCar = () => {
                         </section>
 
                         <p className="text-xs mt-1 line-through  lg:text-base">
-                          ${price}.00
+                        {offPrice === 0 ? "" : `$${price}.00`}
                         </p>
                       </div>
 

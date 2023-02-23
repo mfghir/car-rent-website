@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import PopularCar from "../components/PopularCar";
 
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Slider({ data }) {
   const [width, setWidth] = useState(0);
@@ -13,24 +13,25 @@ function Slider({ data }) {
   }, []);
 
   return (
+    
     <>
       <motion.div
-        className="carousel  overflow-hidden"
+        className="overflow-hidden cursor-grab "
         ref={carousel}
         whileTap={{ cursor: "grabbing" }}
       >
         <motion.div
           drag="x"
           dragConstraints={{ right: 0, left: -width }}
-          className="inner-carousel flex justify-between items-center flex-nowrap"
+          className="flex "
         >
           {data?.map((item) => {
             return (
-              <NavLink to={`/detailCar/${item.id}`} key={item.id}>
-                <motion.div>
+              <Link to={`/detailCar/${item.id}`} key={item.id}>
+                <motion.div className="" >
                   <PopularCar item={item} />
                 </motion.div>
-              </NavLink>
+              </Link>
             );
           })}
         </motion.div>
