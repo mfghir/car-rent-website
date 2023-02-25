@@ -1,3 +1,5 @@
+import React from "react";
+
 const StarRating = ({ rating }) => {
   //   const stars = [];
 
@@ -17,7 +19,7 @@ const StarRating = ({ rating }) => {
     <div>
       {[...Array(5)].map((item, key) => {
         return (
-          <>
+          <React.Fragment key={key}>
             {key < rating ? (
               <span className="ml-[2px] lg:scale-[1.5] lg:ml-[5px] inline-block text-[#fbad39]">
                 &#9733;
@@ -27,7 +29,7 @@ const StarRating = ({ rating }) => {
                 &#9734;
               </span>
             )}
-          </>
+          </React.Fragment>
         );
       })}
     </div>

@@ -1,20 +1,22 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { GasStation, Heart, Profile2User, Story } from "iconsax-react";
 
 import { ProductsContext } from "../context/ProductsProvider";
 
 const PopularCar = ({ item }) => {
   const [state, dispatch] = useContext(ProductsContext);
-  const { name, kind, fav, img, fuel, capacity, price, offPrice } = item;
+  const { name, kind, fav, img, fuel, capacity, price, offPrice, id } = item;
 
   return (
     <div className="rounded-[10px] bg-white p-4  mr-5 w-60 lg:mr-8 lg:w-[304px] ">
       <div className="flex justify-between items-center ">
         <p className="flex flex-col">
-          <span className="font-semibold text-base text-[#1A202C] lg:text-xl lg:font-bold">
-            {name}
-          </span>
+          <Link to={`/detailCar/${id}`}>
+            <span className="font-semibold text-base text-[#1A202C] lg:text-xl lg:font-bold">
+              {name}
+            </span>
+          </Link>
           <span className="font-medium text-xs text-[#90A3BF] lg:text-sm lg:font-bold">
             {kind}
           </span>
@@ -81,14 +83,14 @@ const PopularCar = ({ item }) => {
           </p>
         </div>
 
-        <NavLink to="/payment">
+        <Link to="/payment">
           <button
             className="bg-[#3563E9] rounded-[4px] text-white text-xs lg:text-base font-semibold px-4 py-[10px] lg:px-5 "
             onClick={() => dispatch({ type: "ADD_ITEM", payload: item })}
           >
             Rental Now
           </button>
-        </NavLink>
+        </Link>
       </div>
     </div>
   );

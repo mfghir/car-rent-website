@@ -13,7 +13,6 @@ function Slider({ data }) {
   }, []);
 
   return (
-    
     <>
       <motion.div
         className="overflow-hidden cursor-grab "
@@ -27,11 +26,11 @@ function Slider({ data }) {
         >
           {data?.map((item) => {
             return (
-              <Link to={`/detailCar/${item.id}`} key={item.id}>
-                <motion.div className="" >
+              <motion.div key={item.id}>
+                  {/* <Link to={`/detailCar/${item.id}`} key={item.id}> */}
                   <PopularCar item={item} />
+              {/* </Link> */}
                 </motion.div>
-              </Link>
             );
           })}
         </motion.div>

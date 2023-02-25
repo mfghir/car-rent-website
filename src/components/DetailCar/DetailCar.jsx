@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import NavbarIcon from "../NavbarIcon";
 
 import { ArrowDown2, ArrowUp2, Heart } from "iconsax-react";
@@ -80,7 +80,7 @@ const DetailCar = () => {
                         )}
                       </span>
                     </div>
-                    
+
                     <div className="flex justify-between items-center   mt-2">
                       <div className="flex justify-between items-center">
                         <span className="text-[#fbad39]  mr-[2px] lg:scale-[1.7] lg:mr-[5px] ">
@@ -147,7 +147,7 @@ const DetailCar = () => {
                       <div>
                         <section className="flex justify-between items-end font-bold">
                           <div className="text-[#1A202C] text-xl  lg:text-[28px]">
-                          ${offPrice === 0 ? price : offPrice}.00/
+                            ${offPrice === 0 ? price : offPrice}.00/
                           </div>
                           <span className="text-[#90A3BF] text-xs lg:text-base">
                             days
@@ -155,13 +155,15 @@ const DetailCar = () => {
                         </section>
 
                         <p className="text-xs mt-1 line-through  lg:text-base">
-                        {offPrice === 0 ? "" : `$${price}.00`}
+                          {offPrice === 0 ? "" : `$${price}.00`}
                         </p>
                       </div>
 
-                      <button className="bg-[#3563E9] rounded-[4px] text-white text-xs lg:text-base font-semibold px-4 py-[10px] lg:px-5">
-                        Rental Now
-                      </button>
+                      <Link to="/payment">
+                        <button className="bg-[#3563E9] rounded-[4px] text-white text-xs lg:text-base font-semibold px-4 py-[10px] lg:px-5">
+                          Rental Now
+                        </button>
+                      </Link>
                     </div>
                   </section>
                 </div>
@@ -178,7 +180,7 @@ const DetailCar = () => {
 
                   {Object.values(reviews)
                     .slice(0, showAll ? Object.values(reviews).length : 2)
-                    .map((item) => {
+                    .map((item , index) => {
                       const {
                         userpic,
                         username,
@@ -188,7 +190,7 @@ const DetailCar = () => {
                         useropion,
                       } = item;
                       return (
-                        <section className="flex  mb-5 mt-6" key={item.id}>
+                        <section className="flex  mb-5 mt-6" key={index}>
                           <img
                             className="w-[44px] h-[44px] lg:w-[56px] lg:h-[56px] mr-2 rounded-full"
                             src={userpic}
