@@ -12,6 +12,8 @@ const initialState = {
   filteredCars :[],
   sortedCars:[],
 
+  isFav: false,
+  favList:[],
   
   itemsCounter: 0,
   total: 0,

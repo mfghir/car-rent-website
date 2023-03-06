@@ -39,8 +39,25 @@ export const reducer = (state, action) => {
         isOpen: !state.isOpen,
       };
 
+
+      case "IS_FAV":
+        return {
+          ...state,
+          isFav: !state.isFav,
+        };
+
+      case 'ADD_FAVORITE':
+        return {
+          ...state,
+          favList: [...state.favList, action.payload],
+        };
+      case 'REMOVE_FAVORITE':
+        return {
+          ...state,
+          favList: state.favList.filter((item) => item.id !== action.payload.id),
+        };
     // case "ADD_TO_FAV": {
-    //   if (!state.fav.find((item) => item.id === action.payload.id)) {
+    //   if (!state.favList.find((item) => item.id === action.payload.id)) {
     //     state.fav.push({
     //       ...action.payload,
     //     });

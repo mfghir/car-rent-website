@@ -56,12 +56,20 @@ const Navbar = () => {
       </section>
 
       <div className="md:flex items-center hidden">
-        <Heart color="#596780" variant="Bold" className="md:mr-5" />
-
+        <div className="relative">
+          {state.favList.length !== 0 ? (
+            <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl bottom-6 left-5"></span>
+          ) : (
+            ""
+          )}
+          <Heart color="#596780" variant="Bold" className="md:mr-5" />
+        </div>
+        
         <div className="relative">
           <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl bottom-6 left-5"></span>
           <Notification color="#596780" variant="Bold" className="md:mr-5 " />
         </div>
+
         <NavLink to="/panel">
           <Setting2 color="#596780" variant="Bold" className="md:mr-5" />
         </NavLink>
