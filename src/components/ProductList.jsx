@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { ProductsContext } from "../context/ProductsProvider";
 
@@ -8,6 +8,7 @@ import CartCategory from "./Category/CartCategory";
 
 const ProductList = () => {
   const [state, dispatch] = useContext(ProductsContext);
+
   const popularCarList = state.carList.filter(
     (car) => car.sort === "popularCar"
   );

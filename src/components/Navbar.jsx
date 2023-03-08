@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import { ProductsContext } from "../context/ProductsProvider";
 import { NavLink } from "react-router-dom";
+import { ProductsContext } from "../context/ProductsProvider";
 
 import {
   Heart,
@@ -13,6 +13,7 @@ import {
 const Navbar = () => {
   const [state, dispatch] = useContext(ProductsContext);
   const [searchTerm, setSearchTerm] = useState("");
+  const [favShow, setFavShow] = useState(false);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -57,14 +58,30 @@ const Navbar = () => {
 
       <div className="md:flex items-center hidden">
         <div className="relative">
-          {state.favList.length !== 0 ? (
+          {state.favList !== 0 ? (
             <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl bottom-6 left-5"></span>
           ) : (
             ""
           )}
+
+          <span onClick={()=> setFavShow(!favShow) }>
+
           <Heart color="#596780" variant="Bold" className="md:mr-5" />
+
+          {favShow ?
+           <>
+              {state.favList.map((fa) => (
+                <p className="mt-2 bg-red-500"> {fa.name} </p>
+              ))}
+            </>
+             :
+             ""
+            }
+            </span>
+          
+          
         </div>
-        
+
         <div className="relative">
           <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl bottom-6 left-5"></span>
           <Notification color="#596780" variant="Bold" className="md:mr-5 " />

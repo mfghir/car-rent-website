@@ -39,23 +39,42 @@ export const reducer = (state, action) => {
         isOpen: !state.isOpen,
       };
 
+    case "IS_FAV":
+      const test = state.carList.filter(
+        (item) => item.id !== action.payload.id
+      );
+      if (test) {
+        return !state.isFav;
+      }
 
-      case "IS_FAV":
-        return {
-          ...state,
-          isFav: !state.isFav,
-        };
+      return {
+        ...state,
+      };
 
-      case 'ADD_FAVORITE':
-        return {
-          ...state,
-          favList: [...state.favList, action.payload],
-        };
-      case 'REMOVE_FAVORITE':
-        return {
-          ...state,
-          favList: state.favList.filter((item) => item.id !== action.payload.id),
-        };
+    case "ADD_FAVORITE": {
+      // if (state.favList.includes(action.payload)) {
+      if (!state.favList.some((item) => item.id === action.payload.id)) {
+        return { ...state, favList: [...state.favList, action.payload] };
+      }
+      return state;
+
+      // if (!state.favList.find((item) => item.id === action.payload.id)) {
+      //   state.favList.push({
+      //     ...action.payload,
+      //   });
+      // }
+
+      // return {
+      //   ...state,
+      //   favList: [...state.favList],
+      //   isFav: !state.isFav,
+      // };
+    }
+    case "REMOVE_FAVORITE":
+      return {
+        ...state,
+        favList: state.favList.filter((item) => item.id !== action.payload.id),
+      };
     // case "ADD_TO_FAV": {
     //   if (!state.favList.find((item) => item.id === action.payload.id)) {
     //     state.fav.push({

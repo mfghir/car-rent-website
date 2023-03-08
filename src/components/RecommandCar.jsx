@@ -7,13 +7,22 @@ const RecommandCar = ({ item }) => {
   const { name, kind, fav, img, fuel, capacity, price, offPrice } = item;
   const [state, dispatch] = useContext(ProductsContext);
 
-  const favHandler =()=>{
-    dispatch({ type: "ADD_FAVORITE", payload: item })
-    dispatch({ type: "IS_FAV", payload: item })
-    !state.isFav == state.isFav;
+  const favHandler = () => {
+    // !state.isFav == state.isFav
+    console.log("click inside");
+    dispatch({ type: "ADD_FAVORITE", payload: item });
+    dispatch({ type: "IS_FAV", payload: item });
+
+    // if (fav === false) {
+    //   dispatch({ type: "IS_FAV", payload: item });
+    //   // !state.isFav == state.isFav;
+    // }
 
     console.log(state.favList);
-  }
+    console.log("isFav", state.isFav);
+  };
+
+  // console.log("click outside" , state.favList);
 
   return (
     <>
@@ -31,22 +40,19 @@ const RecommandCar = ({ item }) => {
             </span>
           </p>
 
-          {fav ? (
-            <Heart color="#ed3f3f" variant="Bold" />
-          ) : (
-            <span
-            onClick={()=>favHandler()}
-              // onClick={() => }
-            >
-              <Heart color="#90a3bf" />
-            </span>
-          )}
-
-
-            {}
-
-
-
+          <span onClick={() => favHandler()}>
+            {fav ? (
+              <Heart color="#ed3f3f" variant="Bold" />
+            ) : (
+              <>
+                {state.isFav ? (
+                  <Heart color="#ed3f3f" variant="Bold" />
+                ) : (
+                  <Heart color="#90a3bf" />
+                )}
+              </>
+            )}
+          </span>
         </div>
 
         <section className=" flex justify-between items-center lg:hidden">
