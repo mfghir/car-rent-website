@@ -7,22 +7,27 @@ const RecommandCar = ({ item }) => {
   const { name, kind, fav, img, fuel, capacity, price, offPrice } = item;
   const [state, dispatch] = useContext(ProductsContext);
 
+
+  // console.log( "favList out",state.favList);
+
   const favHandler = () => {
     // !state.isFav == state.isFav
-    console.log("click inside");
     dispatch({ type: "ADD_FAVORITE", payload: item });
-    dispatch({ type: "IS_FAV", payload: item });
+    // dispatch({ type: "IS_FAV", payload: item });
+
+
+    // state.favList.push({"test" : "mkjj"});
 
     // if (fav === false) {
     //   dispatch({ type: "IS_FAV", payload: item });
     //   // !state.isFav == state.isFav;
     // }
 
-    console.log(state.favList);
-    console.log("isFav", state.isFav);
+    console.log("favHandler",state.favList);
+    // console.log("isFav", state.isFav);
   };
 
-  // console.log("click outside" , state.favList);
+  console.log("click outside" , state.favList);
 
   return (
     <>

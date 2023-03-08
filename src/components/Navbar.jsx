@@ -58,7 +58,7 @@ const Navbar = () => {
 
       <div className="md:flex items-center hidden">
         <div className="relative">
-          {state.favList !== 0 ? (
+          {Object.entries(state.favList).length !== 0 ? (
             <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl bottom-6 left-5"></span>
           ) : (
             ""
@@ -70,8 +70,8 @@ const Navbar = () => {
 
           {favShow ?
            <>
-              {state.favList.map((fa) => (
-                <p className="mt-2 bg-red-500"> {fa.name} </p>
+              {Object.values(state.favList).map((fa) => (
+                <p className="m-5"> {fa.name} </p>
               ))}
             </>
              :
