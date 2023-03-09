@@ -71,9 +71,10 @@ const NavbarIcon = () => {
           <NavLink to="/panel">
             <Setting2 color="#596780" variant="Bold" className="md:mr-5" />
           </NavLink>
+          
           <img
             className="md:w-11 md:h-11"
-            src="https://upcdn.io/kW15b2b/raw/Imageprofile-46DF.png"
+            src="https://i.postimg.cc/Y2VT4G1c/Imageprofile.png"
             alt="Imageprofile"
           />
         </div>
@@ -85,7 +86,7 @@ const NavbarIcon = () => {
           <HambergerMenu size="24" color="#596780" className="cursor-pointer" />
           <img
             className="w-7 h-7"
-            src="https://upcdn.io/kW15b2b/raw/Imageprofile-46DF.png"
+            src="https://i.postimg.cc/Y2VT4G1c/Imageprofile.png"
             alt="Imageprofile"
           />
         </section>

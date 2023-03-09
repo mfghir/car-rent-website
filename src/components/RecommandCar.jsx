@@ -1,33 +1,25 @@
 import { GasStation, Heart, Profile2User, Story } from "iconsax-react";
 import { Link } from "react-router-dom";
 import { ProductsContext } from "../context/ProductsProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const RecommandCar = ({ item }) => {
   const { name, kind, fav, img, fuel, capacity, price, offPrice } = item;
   const [state, dispatch] = useContext(ProductsContext);
 
+  const [isFav, setIsFav] = useState(false);
 
-  // console.log( "favList out",state.favList);
 
   const favHandler = () => {
-    // !state.isFav == state.isFav
-    dispatch({ type: "ADD_FAVORITE", payload: item });
+    setIsFav(!isFav)
     // dispatch({ type: "IS_FAV", payload: item });
-
-
-    // state.favList.push({"test" : "mkjj"});
-
-    // if (fav === false) {
-    //   dispatch({ type: "IS_FAV", payload: item });
-    //   // !state.isFav == state.isFav;
-    // }
+    dispatch({ type: "ADD_FAVORITE", payload: item });
 
     console.log("favHandler",state.favList);
-    // console.log("isFav", state.isFav);
+    console.log("state.isFav", state.isFav);
+    console.log("isFav", isFav);
   };
 
-  console.log("click outside" , state.favList);
 
   return (
     <>
@@ -50,11 +42,15 @@ const RecommandCar = ({ item }) => {
               <Heart color="#ed3f3f" variant="Bold" />
             ) : (
               <>
-                {state.isFav ? (
+                {isFav && !state.isFav ? (
+              
                   <Heart color="#ed3f3f" variant="Bold" />
                 ) : (
                   <Heart color="#90a3bf" />
                 )}
+                
+
+                
               </>
             )}
           </span>

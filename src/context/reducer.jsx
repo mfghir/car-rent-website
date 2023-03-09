@@ -40,19 +40,20 @@ export const reducer = (state, action) => {
       };
 
     case "IS_FAV":
-      const test = state.carList.filter(
-        (item) => item.id !== action.payload.id
-      );
-      if (test) {
-        return !state.isFav;
-      }
+      // const test = state.carList.find((item) => item.id === action.payload.id)
 
-      return {
-        ...state,
-      };
+      // // state.carList.filter((item) => item.id !== action.payload.id);
+      // if (test) {
+      // return !state.isFav;
+      // }
+
+
+    return {
+      ...state,
+      isFav: !state.isFav,
+    };
 
     case "ADD_FAVORITE": {
-      // if (state.favList.includes(action.payload)) {
       if (!state.favList.some((item) => item.id === action.payload.id)) {
         return { ...state, favList: [...state.favList, action.payload] };
       }
@@ -138,11 +139,6 @@ export const reducer = (state, action) => {
       console.log(filtered);
       return { ...state, sortedCars: filtered };
 
-      // if (action.payload.value === "") {
-      //   return { ...state, sortedCars: [] };
-      // } else {
-      //   return { ...state, sortedCars: filtered };
-      // }
     }
 
     case "SEARCH": {
