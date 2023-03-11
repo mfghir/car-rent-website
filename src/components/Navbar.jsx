@@ -81,20 +81,23 @@ const Navbar = () => {
               <div className="w-max p-3 bg-blue-gray-100 rounded absolute top-6 right-8">
                 {Object.values(state.favList).map((favItem) => (
                   <p className="my-2 flex items-center" key={favItem.id}>
-                    <span className="mr-2 text-sm">{favItem.name}</span>
-                    <span
-                      className="cursor-pointer"
-                      onClick={() => {
-                        // dispatch({ type: "IS_FAV", payload: favItem })
-                        dispatch({ type: "REMOVE_FAVORITE", payload: favItem });
-                        dispatch({ type: "IS_FAV_REMOVE", payload: favItem });
+                    {favItem.fav && (
+                      <>
+                        <span className="mr-2 text-sm">{favItem.name}</span>
 
-                        console.log("rem", state.favList);
-                        console.log("rem", state.isFavRem);
-                      }}
-                    >
-                      <CloseCircle size="16" color="#FF4423" />
-                    </span>
+                        <span
+                          className="cursor-pointer"
+                          onClick={() =>
+                            dispatch({
+                              type: "REMOVE_FAVORITE",
+                              payload: favItem,
+                            })
+                          }
+                        >
+                          <CloseCircle size="16" color="#FF4423" />
+                        </span>
+                      </>
+                    )}
                   </p>
                 ))}
               </div>
