@@ -12,7 +12,7 @@ const initialState = {
   filteredCars :[],
   sortedCars:[],
 
-  isFav: false,
+  isFavRem: false,
   favList:[],
   
   itemsCounter: 0,

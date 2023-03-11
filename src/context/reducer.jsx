@@ -39,43 +39,71 @@ export const reducer = (state, action) => {
         isOpen: !state.isOpen,
       };
 
-    case "IS_FAV":
-      // const test = state.carList.find((item) => item.id === action.payload.id)
+    // case "ADD_FAVORITE": {
+    //   if (!state.favList.some((item) => item.id === action.payload.id)) {
+    //     const newFavList = [...state.favList, { ...action.payload, fav: true }];
+    //     return { ...state, favList: newFavList };
+    //   }
+    //   return state;
+    // }
+  
 
-      // // state.carList.filter((item) => item.id !== action.payload.id);
-      // if (test) {
-      // return !state.isFav;
-      // }
+    // case "TOGGLE_FAVORITE": {
+    //   const newFavList = state.favList.map((item) => {
+    //     if (item.id === action.payload.id) {
+    //       return { ...item, fav: !item.fav };
+    //     }
+    //     return item;
+    //   });
+    //   return { ...state, favList: newFavList };
+    // }
 
-
-    return {
-      ...state,
-      isFav: !state.isFav,
-    };
-
-    case "ADD_FAVORITE": {
-      if (!state.favList.some((item) => item.id === action.payload.id)) {
-        return { ...state, favList: [...state.favList, action.payload] };
+    case "TOGGLE_ADD_FAVORITE": {
+      const idToToggle = action.payload.id;
+      const favList = state.favList.map((item) => {
+        if (item.id === idToToggle) {
+          return { ...item, fav: !item.fav };
+        }
+        return item;
+      });
+      if (!favList.some((item) => item.id === idToToggle)) {
+        const itemToAdd = { ...action.payload, fav: true };
+        favList.push(itemToAdd);
       }
-      return state;
+      return { ...state, favList };
+    }
 
-      // if (!state.favList.find((item) => item.id === action.payload.id)) {
-      //   state.favList.push({
-      //     ...action.payload,
-      //   });
-      // }
 
+
+
+    case "REMOVE_FAVORITE": {
       // return {
       //   ...state,
-      //   favList: [...state.favList],
-      //   isFav: !state.isFav,
+      //   favList: {
+      //     ...state.favList.filter((item) => item.id !== action.payload.id),
+      //   },
       // };
+
+
+      const idToRemove = action.payload.id;
+      const itemToRemove = state.favList.find((item) => item.id === idToRemove);
+      if (itemToRemove) {
+        // const test = { ...action.payload, fav: false };
+        // itemToRemove.push(test);
+
+        itemToRemove.fav = false;
+      }
+      const newFavList = state.favList.filter((item) => item.id !== idToRemove);
+      return { ...state, favList: newFavList };
+
     }
-    case "REMOVE_FAVORITE":
+    case "IS_FAV_REMOVE":
       return {
         ...state,
-        favList: state.favList.filter((item) => item.id !== action.payload.id),
+        isFavRem: !state.isFavRem,
       };
+
+
     // case "ADD_TO_FAV": {
     //   if (!state.favList.find((item) => item.id === action.payload.id)) {
     //     state.fav.push({
@@ -138,7 +166,6 @@ export const reducer = (state, action) => {
       );
       console.log(filtered);
       return { ...state, sortedCars: filtered };
-
     }
 
     case "SEARCH": {

@@ -26,7 +26,6 @@ const Navbar = () => {
   //   dispatch({ type: "REMOVE_FAVORITE", payload: favItem })
   // }
 
-
   return (
     <div className="flex justify-between items-center flex-wrap pt-8 px-6 md:flex-nowrap lg:py-10 border-b border-[#C3D4E966]">
       <section className="flex justify-between items-center">
@@ -64,9 +63,9 @@ const Navbar = () => {
       </section>
 
       <div className="md:flex items-center hidden">
-        <div className="bg-green-600 ">
+        <div className="flex">
           <span
-            className="bg-yellow-500 inline-block relative"
+            className=" inline-block relative"
             onClick={() => setFavShow(!favShow)}
           >
             <Heart
@@ -85,13 +84,14 @@ const Navbar = () => {
                     <span className="mr-2 text-sm">{favItem.name}</span>
                     <span
                       className="cursor-pointer"
-                      onClick={() =>{
-                        dispatch({ type: "IS_FAV", payload: favItem })
-                        dispatch({ type: "REMOVE_FAVORITE", payload: favItem })
-                        
-                      
-                      }
-                    }
+                      onClick={() => {
+                        // dispatch({ type: "IS_FAV", payload: favItem })
+                        dispatch({ type: "REMOVE_FAVORITE", payload: favItem });
+                        dispatch({ type: "IS_FAV_REMOVE", payload: favItem });
+
+                        console.log("rem", state.favList);
+                        console.log("rem", state.isFavRem);
+                      }}
                     >
                       <CloseCircle size="16" color="#FF4423" />
                     </span>

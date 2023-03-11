@@ -9,17 +9,18 @@ const RecommandCar = ({ item }) => {
 
   const [isFav, setIsFav] = useState(false);
 
-
-  const favHandler = () => {
-    setIsFav(!isFav)
+  const favHandler =  () => {
+    setIsFav(!isFav);
     // dispatch({ type: "IS_FAV", payload: item });
-    dispatch({ type: "ADD_FAVORITE", payload: item });
+     dispatch({ type: "TOGGLE_ADD_FAVORITE", payload: item });
+     dispatch({ type: "IS_FAV_REMOVE", payload: item });
 
-    console.log("favHandler",state.favList);
-    console.log("state.isFav", state.isFav);
-    console.log("isFav", isFav);
+    console.log("favHandler", state.favList);
+    // console.log("state.isFav", state.isFav);
+    // console.log("isFav", isFav);
   };
 
+  console.log("favHandler out-----", state.favList);
 
   return (
     <>
@@ -37,21 +38,34 @@ const RecommandCar = ({ item }) => {
             </span>
           </p>
 
+          {/* {fav  ? (
+              <Heart color="#ed3f3f" variant="Bold" />
+            ) : (
+              <Heart color="#90a3bf" />
+
+              )} */}
+
+          {/* <span onClick={() => favHandler()}>
+            {!state.isFavRem ? (
+              <Heart color="#ed3f3f" variant="Bold" />
+            ) : (
+              <Heart color="#90a3bf" />
+            )}
+          </span> */}
+
           <span onClick={() => favHandler()}>
             {fav ? (
               <Heart color="#ed3f3f" variant="Bold" />
             ) : (
               <>
-                {isFav && !state.isFav ? (
-              
+                {isFav ? (
+
                   <Heart color="#ed3f3f" variant="Bold" />
                 ) : (
-                  <Heart color="#90a3bf" />
-                )}
-                
+              <Heart color="#90a3bf" />
+                 )}
 
-                
-              </>
+              </> 
             )}
           </span>
         </div>
