@@ -8,6 +8,11 @@ const PopularCar = ({ item }) => {
   const [state, dispatch] = useContext(ProductsContext);
   const { name, kind, fav, img, fuel, capacity, price, offPrice, id } = item;
 
+  const favListIcon = state.favList.filter((it) => it.id === id);
+  const favHandler = () => {
+    dispatch({ type: "TOGGLE_ADD_FAVORITE", payload: item });
+  };
+
   return (
     <div className="rounded-[10px] bg-white p-4  mr-5 w-60 lg:mr-8 lg:w-[304px] ">
       <div className="flex justify-between items-center ">
@@ -22,11 +27,13 @@ const PopularCar = ({ item }) => {
           </span>
         </p>
 
-        {fav ? (
-          <Heart color="#ed3f3f" variant="Bold" />
-        ) : (
-          <Heart color="#90a3bf" />
-        )}
+        <span onClick={() => favHandler()}>
+          {fav || (favListIcon.length > 0 && favListIcon[0].fav) ? (
+            <Heart color="#ed3f3f" variant="Bold" />
+          ) : (
+            <Heart color="#90a3bf" />
+          )}
+        </span>
       </div>
 
       <div className="relative flex justify-center items-center">

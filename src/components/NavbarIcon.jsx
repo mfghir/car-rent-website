@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ProductsContext } from "../context/ProductsProvider";
 
@@ -9,16 +9,28 @@ import {
   SearchNormal1,
   Setting2,
   Setting4,
+  CloseCircle,
 } from "iconsax-react";
 
 const NavbarIcon = () => {
   const [state, dispatch] = useContext(ProductsContext);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [favShow, setFavShow] = useState(false);
+
+
+  const [isListEmpty, setIsListEmpty] = useState(true);
+
+  // Update isListEmpty state whenever favList changes
+  useEffect(() => {
+    setIsListEmpty(state.favList.length === 0);
+  }, [state.favList]);
+
+
+
   const isOpentHandler = () => {
     dispatch({ type: "IS_OPEN" });
     !state.isOpen == state.isOpen;
   };
-
-  const [searchTerm, setSearchTerm] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -62,7 +74,52 @@ const NavbarIcon = () => {
         </section>
 
         <div className="md:flex items-center hidden">
-          <Heart color="#596780" variant="Bold" className="md:mr-5" />
+          {/* <Heart color="#596780" variant="Bold" className="md:mr-5" /> */}
+
+          <div className="flex">
+            <span
+              className=" inline-block relative"
+              onClick={() => setFavShow(!favShow)}
+            >
+              <Heart
+                color="#596780"
+                variant="Bold"
+                className="md:mr-5 cursor-pointer "
+              />
+
+{state.favList.length > 0 ? (
+    <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl -top-3 left-5"></span>
+) : null}
+              {favShow && state.favList.length !== 0 && (
+                <div className="w-max p-3 bg-blue-gray-100 rounded absolute top-6 right-8">
+                  {Object.values(state.favList).map((favItem) => (
+                    <p
+                      className="my-2 flex items-center justify-between"
+                      key={favItem.id}
+                    >
+                      {favItem.fav && (
+                        <>
+                          <span className="mr-2 text-sm">{favItem.name}</span>
+                          <span
+                            className="cursor-pointer"
+                            onClick={() =>
+                              dispatch({
+                                type: "REMOVE_FAVORITE",
+                                payload: favItem,
+                              })
+                            }
+                          >
+                            <CloseCircle size="16" color="#FF4423" />
+                          </span>
+                        </>
+                      )}
+                    </p>
+                  ))}
+                </div>
+              )}
+            </span>
+          </div>
+
           <div className="relative">
             <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl bottom-6 left-5"></span>
             <Notification color="#596780" variant="Bold" className="md:mr-5 " />
@@ -71,7 +128,7 @@ const NavbarIcon = () => {
           <NavLink to="/panel">
             <Setting2 color="#596780" variant="Bold" className="md:mr-5" />
           </NavLink>
-          
+
           <img
             className="md:w-11 md:h-11"
             src="https://i.postimg.cc/Y2VT4G1c/Imageprofile.png"

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ProductsContext } from "../context/ProductsProvider";
 
@@ -16,15 +16,17 @@ const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [favShow, setFavShow] = useState(false);
 
+  const [isListEmpty, setIsListEmpty] = useState(true);
+
+  // Update isListEmpty state whenever favList changes
+  useEffect(() => {
+    setIsListEmpty(state.favList.length === 0);
+  }, [state.favList]);
+
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch({ type: "SEARCH", payload: searchTerm });
   };
-
-  // const favListHandler = (favItem) => {
-  //   console.log("favItem",favItem.id);
-  //   dispatch({ type: "REMOVE_FAVORITE", payload: favItem })
-  // }
 
   return (
     <div className="flex justify-between items-center flex-wrap pt-8 px-6 md:flex-nowrap lg:py-10 border-b border-[#C3D4E966]">
@@ -73,14 +75,17 @@ const Navbar = () => {
               variant="Bold"
               className="md:mr-5 cursor-pointer "
             />
-            {Object.entries(state.favList).length !== 0 && (
-              <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl -top-3 left-5"></span>
-            )}
+          {state.favList.length > 0 ? (
+    <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl -top-3 left-5"></span>
+) : null}
 
-            {favShow ? (
+            {favShow && state.favList.length !== 0 && (
               <div className="w-max p-3 bg-blue-gray-100 rounded absolute top-6 right-8">
                 {Object.values(state.favList).map((favItem) => (
-                  <p className="my-2 flex items-center" key={favItem.id}>
+                  <p
+                    className="my-2 flex items-center justify-between"
+                    key={favItem.id}
+                  >
                     {favItem.fav && (
                       <>
                         <span className="mr-2 text-sm">{favItem.name}</span>
@@ -101,9 +106,7 @@ const Navbar = () => {
                   </p>
                 ))}
               </div>
-            ) : (
-              ""
-            )}
+            ) }
           </span>
         </div>
 

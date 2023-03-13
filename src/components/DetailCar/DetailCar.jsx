@@ -21,6 +21,12 @@ const DetailCar = () => {
     (car) => car.id.toString() === id
   );
 
+  console.log(filterCarList);
+  const favListIcon = state.favList.filter((it) => it.id === filterCarList.id);
+  const favHandler = (item) => {
+    dispatch({ type: "TOGGLE_ADD_FAVORITE", payload: item });
+  };
+
   return (
     <>
       <NavbarIcon />
@@ -33,7 +39,6 @@ const DetailCar = () => {
               id,
               name,
               fav,
-              views,
               reviewer,
               caption,
               typeCar,
@@ -52,18 +57,32 @@ const DetailCar = () => {
                   <section className="flex flex-wrap lg:w-[48%] lg:mr-8">
                     <img
                       className="rounded-lg lg:hidden"
-                      src="https://upcdn.io/kW15b2b/raw/phone-categoryAds-ZkC2.png"
+                      src="https://i.postimg.cc/wMsf52DC/phone-category-Ads.png"
                       alt="phoneCategoryAds"
                     />
                     <img
                       className="rounded-[10px] hidden lg:block"
-                      src="https://upcdn.io/kW15b2b/raw/deskCategoryAds-7W9H.png"
+                      src="https://i.postimg.cc/43xTvCyj/desk-Category-Ads.png"
                       alt="deskCategoryAds"
                     />
+
+                    
                     <div className="w-full flex justify-between items-center mt-6">
-                      <img className="w-[30%]" src={views.view1} alt="view1" />
-                      <img className="w-[30%]" src={views.view2} alt="view2" />
-                      <img className="w-[30%]" src={views.view3} alt="view3" />
+                      <img
+                        className="w-[30%]"
+                        src="https://i.postimg.cc/mk0nKJbZ/View-1.png"
+                        alt="view1"
+                      />
+                      <img
+                        className="w-[30%]"
+                        src="https://i.postimg.cc/Hk0NP6FH/View-2.png"
+                        alt="view2"
+                      />
+                      <img
+                        className="w-[30%]"
+                        src="https://i.postimg.cc/hPd6VDrX/View-3.png"
+                        alt="view3"
+                      />
                     </div>
                   </section>
 
@@ -72,11 +91,14 @@ const DetailCar = () => {
                       <h1 className="text-[#1A202C] font-bold text-xl lg:text-[32px]">
                         {name}
                       </h1>
-                      <span className="hidden md:block">
-                        {fav ? (
-                          <Heart color="#ED3F3F" variant="Bold" />
+                      <span
+                        className="hidden md:block"
+                        onClick={() => favHandler(item)}
+                      >
+                        {fav? (
+                          <Heart color="#ed3f3f" variant="Bold" />
                         ) : (
-                          <Heart color="#90A3BF" />
+                          <Heart color="#90a3bf" />
                         )}
                       </span>
                     </div>
@@ -180,7 +202,7 @@ const DetailCar = () => {
 
                   {Object.values(reviews)
                     .slice(0, showAll ? Object.values(reviews).length : 2)
-                    .map((item , index) => {
+                    .map((item, index) => {
                       const {
                         userpic,
                         username,

@@ -27,19 +27,19 @@ const Payment = () => {
             const { name, reviewer, price } = item;
             return (
               <div className="">
-                <div className="flex justify-between border-b-[1px] border-[#C3D4E966] py-6">
+                <div className="flex items-center  border-b-[1px] border-[#C3D4E966] py-6">
                   <img
                     className="h-[80px] mr-4"
-                    src="https://upcdn.io/kW15b2b/raw/View%201-6QAo.png"
+                    src="https://i.postimg.cc/mk0nKJbZ/View-1.png"
                     alt="view"
                   />
 
-                  <div className="flex flex-wrap ">
+                  <div className="flex flex-wrap flex-col">
                     <p className="text-[#1A202C] font-bold text-xl lg:text-[32px]">
                       {name}
                     </p>
 
-                    <div className="flex items-baseline flex-col">
+                    <div className="flex items-baseline flex-col md:flex-row">
                       <div>
                         <span className="text-[#fbad39]  mr-[2px] lg:scale-[1.7] lg:mr-[5px] ">
                           &#9733;

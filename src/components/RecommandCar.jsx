@@ -1,39 +1,20 @@
 import { GasStation, Heart, Profile2User, Story } from "iconsax-react";
 import { Link } from "react-router-dom";
 import { ProductsContext } from "../context/ProductsProvider";
-import { useContext, useEffect, useState } from "react";
+
+import { useContext } from "react";
 
 const RecommandCar = ({ item }) => {
-  const { name, kind, fav, img, fuel, capacity, price, offPrice } = item;
+  const { name, kind, fav, img, fuel, capacity, price, offPrice, id } = item;
   const [state, dispatch] = useContext(ProductsContext);
 
-  // const [isFav, setIsFav] = useState(fav);
-
+  const favListIcon = state.favList.filter((it) => it.id === id);
   const favHandler = () => {
-    // setIsFav({fav: true});
-    // dispatch({ type: "IS_FAV", payload: item });
     dispatch({ type: "TOGGLE_ADD_FAVORITE", payload: item });
-
-    //  dispatch({ type: "ADD_FAVORITE", payload: item });
-    //  dispatch({ type: "TOGGLE_FAVORITE", payload: item });
-
-    //  console.log("fav", fav);
-    console.log("favHandler", state.favList);
-    // console.log("state.isFav", state.isFav);
-    // console.log("isFav", isFav);
   };
-
-  // console.log("setIsFav", isFav);
-  // console.log("fav out", fav);
-  console.log("favHandler out-----", state.favList);
 
   return (
     <>
-      {/* 
-<div className="bg-red-300 ">
-  <textarea name="" id="" cols="30" rows="10" spellCheck="true" ></textarea>
-</div> */}
-
       <div className="rounded-[10px] bg-white p-2 mt-5 ">
         <div className="flex justify-between items-center ">
           <p className="flex flex-col">
@@ -48,37 +29,13 @@ const RecommandCar = ({ item }) => {
             </span>
           </p>
 
-          {fav ? (
-            <Heart color="#ed3f3f" variant="Bold" />
-          ) : (
-            <Heart color="#90a3bf" />
-          )}
-
-          {/* {state.isFavRem === true? (
-            <span onClick={() => favHandler()}>
-            {fav  ? (
+          <span onClick={() => favHandler()}>
+            {fav  || (favListIcon.length > 0 && favListIcon[0].fav) ? (
               <Heart color="#ed3f3f" variant="Bold" />
-          // </span>
             ) : (
-          // <span onClick={() => favHandler()}>
-
               <Heart color="#90a3bf" />
-              )}
-              </span> */}
-
-          {/* <span onClick={() => favHandler()}>
-            {fav ? (
-              <Heart color="#ed3f3f" variant="Bold" />
-            ) : (
-              <>
-                {fav ? (
-                  <Heart color="#ed3f3f" variant="Bold" />
-                ) : (
-                  <Heart color="#90a3bf" />
-                )}
-              </>
             )}
-          </span> */}
+          </span>
         </div>
 
         <section className=" flex justify-between items-center lg:hidden">
@@ -159,7 +116,7 @@ const RecommandCar = ({ item }) => {
               variant="Bold"
             />
             <span className="font-medium text-xs text-[#90A3BF] ml-1 md:text-sm">
-              {item.people}People
+              {capacity}People
             </span>
           </li>
         </ul>

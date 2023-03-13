@@ -30,14 +30,14 @@ const PaymentNavbar = () => {
 
         <img
           className="md:w-11 md:h-11"
-          src="https://upcdn.io/kW15b2b/raw/Imageprofile-46DF.png"
+          src="https://i.postimg.cc/Y2VT4G1c/Imageprofile.png"
           alt="Imageprofile"
         />
       </div>
 
       <img
         className="w-7 h-7 md:hidden"
-        src="https://upcdn.io/kW15b2b/raw/Imageprofile-46DF.png"
+        src="https://i.postimg.cc/Y2VT4G1c/Imageprofile.png"
         alt="Imageprofile"
       />
     </div>

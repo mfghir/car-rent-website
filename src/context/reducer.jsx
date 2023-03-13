@@ -39,38 +39,32 @@ export const reducer = (state, action) => {
         isOpen: !state.isOpen,
       };
 
-    case "ADD_FAVORITE": {
-      if (!state.favList.some((item) => item.id === action.payload.id)) {
-        const newFavList = [...state.favList, { ...action.payload, fav: true }];
-        return { ...state, favList: newFavList };
-      }
-      return state;
-    }
-  
+    // case "ADD_FAVORITE": {
+    //   if (!state.favList.some((item) => item.id === action.payload.id)) {
+    //     const newFavList = [...state.favList, { ...action.payload, fav: true }];
+    //     return { ...state, favList: newFavList };
+    //   }
+    //   return state;
+    // }
 
-    case "TOGGLE_FAVORITE": {
-      const newFavList = state.favList.map((item) => {
-        if (item.id === action.payload.id) {
-          return { ...item, fav: !item.fav };
-        }
-        return item;
-      });
-      return { ...state, favList: newFavList };
-    }
+    // case "TOGGLE_FAVORITE": {
+    //   const newFavList = state.favList.map((item) => {
+    //     if (item.id === action.payload.id) {
+    //       return { ...item, fav: !item.fav };
+    //     }
+    //     return item;
+    //   });
+    //   return { ...state, favList: newFavList };
+    // }
 
     case "TOGGLE_ADD_FAVORITE": {
       const idToToggle = action.payload.id;
       const favList = state.favList.map((item) => {
         if (item.id === idToToggle) {
-        console.log("item.id === idToToggle" , item);
-
           return { ...item, fav: !item.fav };
         }
-
-        console.log("TOGGLE_ADD_FAVORITE" , item);
         return item;
       });
-
 
       if (!favList.some((item) => item.id === idToToggle)) {
         const itemToAdd = { ...action.payload, fav: true };
@@ -79,57 +73,15 @@ export const reducer = (state, action) => {
       return { ...state, favList };
     }
 
-
-
-
     case "REMOVE_FAVORITE": {
-      // return {
-      //   ...state,
-      //   favList: {
-      //     ...state.favList.filter((item) => item.id !== action.payload.id),
-      //   },
-      // };
-
-
       const idToRemove = action.payload.id;
       const itemToRemove = state.carList.find((item) => item.id === idToRemove);
       if (itemToRemove) {
-        console.log( "itemToRemove",itemToRemove);
-        // const test = { ...action.payload, fav: false };
-        // itemToRemove.fav.push(false);
-
         itemToRemove.fav = false;
-        // const test = itemToRemove.fav = false;
-        // state.isFavRem= test
       }
       const newFavList = state.favList.filter((item) => item.id !== idToRemove);
       return { ...state, favList: newFavList };
-
     }
-
-    
-    case "IS_FAV_REMOVE":{
-      // const test = ""
-      
-      return {
-        ...state,
-        isFavRem: !state.isFavRem,
-      };
-      }
-
-
-    // case "ADD_TO_FAV": {
-    //   if (!state.favList.find((item) => item.id === action.payload.id)) {
-    //     state.fav.push({
-    //       ...action.payload,
-    //     });
-    //   }
-    //   return {
-    //     ...state,
-    //     fav: [...state.fav],
-    //     checkout: false,
-    //   };
-    // }
 
     case "ADD_ITEM": {
       if (!state.selectedItems.find((item) => item.id === action.payload.id)) {
