@@ -9,17 +9,15 @@ import CartCategory from "./Category/CartCategory";
 const ProductList = () => {
   const [state, dispatch] = useContext(ProductsContext);
 
-  const popularCarList = state.carList.filter(
+  const popularCarList = state.carList?.filter(
     (car) => car.sort === "popularCar"
   );
-  const recommandCarList = state.carList.filter(
+  const recommandCarList = state.carList?.filter(
     (car) => car.sort === "recommandCar"
   );
 
   return (
     <div className="mt-8 px-6 lg:px-16 ">
-     
-
       {/* ------------------------------- Popular Car */}
       <div className="flex justify-between items-center mb-5 lg:mb-[30px]">
         <p className="text-[#90A3BF] text-sm font-semibold">Popular Car</p>
