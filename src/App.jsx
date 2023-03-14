@@ -8,6 +8,7 @@ import Category from "./components/Category/Category";
 
 import Payment from "./components/Payment/Payment";
 import Panel from "./components/Panel/Panel";
+import SearchPage from "./components/SearchPage";
 
 const App = () => {
   return (
@@ -18,8 +19,10 @@ const App = () => {
         <Route path="/detailCar" element={<DetailCar />} />
         <Route path="/detailCar/:id" element={<DetailCar />} />
 
-        <Route path="/payment/" element={<Payment />} />
-        <Route path="/panel/" element={<Panel />} />
+
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/panel" element={<Panel />} />
       </Routes>
 
       {/* <Footer /> */}

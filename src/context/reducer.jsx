@@ -39,28 +39,12 @@ export const reducer = (state, action) => {
         isOpen: !state.isOpen,
       };
 
-    // case "ADD_FAVORITE": {
-    //   if (!state.favList.some((item) => item.id === action.payload.id)) {
-    //     const newFavList = [...state.favList, { ...action.payload, fav: true }];
-    //     return { ...state, favList: newFavList };
-    //   }
-    //   return state;
-    // }
-
-    // case "TOGGLE_FAVORITE": {
-    //   const newFavList = state.favList.map((item) => {
-    //     if (item.id === action.payload.id) {
-    //       return { ...item, fav: !item.fav };
-    //     }
-    //     return item;
-    //   });
-    //   return { ...state, favList: newFavList };
-    // }
-
     case "TOGGLE_ADD_FAVORITE": {
       const idToToggle = action.payload.id;
-      const isNewFavorite = !state.favList.some((item) => item.id === idToToggle);
-    
+      const isNewFavorite = !state.favList.some(
+        (item) => item.id === idToToggle
+      );
+
       if (isNewFavorite) {
         // Add new favorite
         const itemToAdd = { ...action.payload, fav: true };
@@ -78,8 +62,6 @@ export const reducer = (state, action) => {
           favList: newFavList,
         };
       }
-
-
     }
 
     case "REMOVE_FAVORITE": {
@@ -90,11 +72,7 @@ export const reducer = (state, action) => {
       }
       const newFavList = state.favList.filter((item) => item.id !== idToRemove);
       return { ...state, favList: newFavList };
-
     }
-
-
-
 
     case "ADD_ITEM": {
       if (!state.selectedItems.find((item) => item.id === action.payload.id)) {

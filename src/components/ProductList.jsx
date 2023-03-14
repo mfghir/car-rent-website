@@ -18,17 +18,7 @@ const ProductList = () => {
 
   return (
     <div className="mt-8 px-6 lg:px-16 ">
-      {state.filteredCars.length === 0 ? (
-        ""
-      ) : (
-        <div className="bg-gray-300  w-full rounded-xl my-7">
-          <section className="mx-8 grid grid-cols-1 md:grid-cols-2 md:gap-5 xl:grid-cols-3 xl:gap-8  pb-4">
-            {state.filteredCars.map((item) => (
-              <CartCategory key={item.id} item={item} />
-            ))}
-          </section>
-        </div>
-      )}
+     
 
       {/* ------------------------------- Popular Car */}
       <div className="flex justify-between items-center mb-5 lg:mb-[30px]">

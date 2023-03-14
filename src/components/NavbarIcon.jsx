@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate  } from "react-router-dom";
 import { ProductsContext } from "../context/ProductsProvider";
 
 import {
@@ -17,13 +17,20 @@ const NavbarIcon = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [favShow, setFavShow] = useState(false);
 
+
+
   const isOpentHandler = () => {
     dispatch({ type: "IS_OPEN" });
     !state.isOpen == state.isOpen;
   };
 
+
+  const navigate = useNavigate()
+
   const submitHandler = (e) => {
     e.preventDefault();
+    const searchString = new URLSearchParams({ q: searchTerm }).toString();
+    navigate(`/search?${searchString}`);
     dispatch({ type: "SEARCH", payload: searchTerm });
   };
 
@@ -64,8 +71,6 @@ const NavbarIcon = () => {
         </section>
 
         <div className="md:flex items-center hidden">
-          {/* <Heart color="#596780" variant="Bold" className="md:mr-5" /> */}
-
           <div className="flex">
             <span
               className=" inline-block relative"
@@ -77,13 +82,9 @@ const NavbarIcon = () => {
                 className="md:mr-5 cursor-pointer "
               />
 
-
-  
-{state.favList &&state.favList.length > 0 && (
-    <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl -top-3 left-5"></span>
-) }
-
-
+              {state.favList && state.favList.length > 0 && (
+                <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl -top-3 left-5"></span>
+              )}
 
               {/* {state.favList && state.favList.length > 0 && (
                 <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl -top-3 left-5"></span>
