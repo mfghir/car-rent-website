@@ -11,6 +11,10 @@ const PopularCar = ({ item }) => {
   const favListIcon = state.favList.filter((it) => it.id === id);
   const favHandler = () => {
     dispatch({ type: "TOGGLE_ADD_FAVORITE", payload: item });
+    // dispatch({
+    //   type: "REMOVE_FAVORITE",
+    //   payload: favItem,
+    // })
   };
 
   return (
