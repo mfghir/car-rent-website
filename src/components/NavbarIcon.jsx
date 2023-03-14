@@ -49,7 +49,7 @@ const NavbarIcon = () => {
             onSubmit={submitHandler}
           >
             <div className="relative flex justify-between">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 cursor-pointer">
                 <SearchNormal1 color="#596780" />
               </div>
 
@@ -156,7 +156,7 @@ const NavbarIcon = () => {
 
         <form className="mt-8 h-12 md:hidden" onSubmit={submitHandler}>
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 cursor-pointer">
               <SearchNormal1 color="#596780" className="" />
             </div>
             <input
