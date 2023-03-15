@@ -11,11 +11,6 @@ const RecommandCar = ({ item }) => {
   const favListIcon = state.favList.filter((it) => it.id === id);
   const favHandler = () => {
     dispatch({ type: "TOGGLE_ADD_FAVORITE", payload: item });
-    console.log("object",state.favList);
-    // dispatch({
-    //   type: "REMOVE_FAVORITE",
-    //   payload: favItem,
-    // })
   };
 
   return (
@@ -35,7 +30,7 @@ const RecommandCar = ({ item }) => {
           </p>
 
           <span onClick={() => favHandler()}>
-            {fav  || (favListIcon.length > 0 && favListIcon[0].fav) ? (
+            {fav || (favListIcon.length > 0 && favListIcon[0].fav) ? (
               <Heart color="#ed3f3f" variant="Bold" />
             ) : (
               <Heart color="#90a3bf" />
@@ -141,12 +136,14 @@ const RecommandCar = ({ item }) => {
             </p>
           </div>
 
-          <button
-            onClick={() => dispatch({ type: "ADD_ITEM", payload: item })}
-            className="bg-[#3563E9] rounded-[4px] text-white text-xs lg:text-base font-semibold px-4 py-[10px] lg:px-5"
-          >
-            Rental Now
-          </button>
+          <Link to="/payment">
+            <button
+              onClick={() => dispatch({ type: "ADD_ITEM", payload: item })}
+              className="bg-[#3563E9] rounded-[4px] text-white text-xs lg:text-base font-semibold px-4 py-[10px] lg:px-5"
+            >
+              Rental Now
+            </button>
+          </Link>
         </div>
       </div>
     </>
