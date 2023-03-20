@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { NavLink, useNavigate  } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ProductsContext } from "../context/ProductsProvider";
 
 import {
@@ -15,17 +15,13 @@ import {
 const NavbarIcon = () => {
   const [state, dispatch] = useContext(ProductsContext);
   const [searchTerm, setSearchTerm] = useState("");
-  const [favShow, setFavShow] = useState(false);
-
-
 
   const isOpentHandler = () => {
     dispatch({ type: "IS_OPEN" });
     !state.isOpen == state.isOpen;
   };
 
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -49,12 +45,12 @@ const NavbarIcon = () => {
             onSubmit={submitHandler}
           >
             <div className="relative flex justify-between">
-            <button
-              type="submit"
-              className="absolute inset-y-0 left-0 flex items-center pl-3 cursor-pointer"
-            >
-              <SearchNormal1 color="#3e7deb" />
-            </button>
+              <button
+                type="submit"
+                className="absolute inset-y-0 left-0 flex items-center pl-3 cursor-pointer"
+              >
+                <SearchNormal1 color="#3e7deb" />
+              </button>
 
               <input
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -75,16 +71,14 @@ const NavbarIcon = () => {
 
         <div className="md:flex items-center hidden">
           <div className="flex">
-            <span
-              className=" inline-block relative"
-              onClick={() => setFavShow(!favShow)}
-            >
-              <Heart
-                color="#596780"
-                variant="Bold"
-                className="md:mr-5 cursor-pointer "
-              />
-
+            <span className=" inline-block relative">
+              <Link to="favorite-list">
+                <Heart
+                  color="#596780"
+                  variant="Bold"
+                  className="md:mr-5 cursor-pointer "
+                />
+              </Link>
               {state.favList && state.favList.length > 0 && (
                 <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl -top-3 left-5"></span>
               )}
@@ -93,33 +87,8 @@ const NavbarIcon = () => {
                 <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl -top-3 left-5"></span>
               )} */}
 
-              {favShow && state.favList.length !== 0 && (
-                <div className="w-max p-3 bg-blue-gray-100 rounded absolute top-6 right-8">
-                  {Object.values(state.favList).map((favItem) => (
-                    <p
-                      className="my-2 flex items-center justify-between"
-                      key={favItem.id}
-                    >
-                      {favItem.fav && (
-                        <>
-                          <span className="mr-2 text-sm">{favItem.name}</span>
-                          <span
-                            className="cursor-pointer"
-                            onClick={() =>
-                              dispatch({
-                                type: "REMOVE_FAVORITE",
-                                payload: favItem,
-                              })
-                            }
-                          >
-                            <CloseCircle size="16" color="#FF4423" />
-                          </span>
-                        </>
-                      )}
-                    </p>
-                  ))}
-                </div>
-              )}
+              
+                
             </span>
           </div>
 
@@ -159,7 +128,7 @@ const NavbarIcon = () => {
 
         <form className="mt-8 h-12 md:hidden" onSubmit={submitHandler}>
           <div className="relative">
-          <button
+            <button
               type="submit"
               className="absolute inset-y-0 left-0 flex items-center pl-3 cursor-pointer"
             >

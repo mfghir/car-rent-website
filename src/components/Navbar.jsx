@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink , useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ProductsContext } from "../context/ProductsProvider";
 
 import {
@@ -14,9 +14,8 @@ import {
 const Navbar = () => {
   const [state, dispatch] = useContext(ProductsContext);
   const [searchTerm, setSearchTerm] = useState("");
-  const [favShow, setFavShow] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -63,49 +62,19 @@ const Navbar = () => {
 
       <div className="md:flex items-center hidden">
         <div className="flex">
-          <span
-            className=" inline-block relative"
-            onClick={() => setFavShow(!favShow)}
-          >
-            <Heart
-              color="#596780"
-              variant="Bold"
-              className="md:mr-5 cursor-pointer "
-            />
+          <span className=" inline-block relative">
+            <Link to="favorite-list">
+              <Heart
+                color="#596780"
+                variant="Bold"
+                className="md:mr-5 cursor-pointer "
+              />
+            </Link>
 
             {state.favList && state.favList.length !== 0 ? (
               <span className="absolute w-[11px] h-[11px] bg-[#FF4423] rounded-xl -top-3 left-5"></span>
             ) : (
               ""
-            )}
-
-            {favShow && state.favList.length !== 0 && (
-              <div className="w-max p-3 bg-blue-gray-100 rounded absolute top-6 right-8">
-                {Object.values(state.favList).map((favItem) => (
-                  <p
-                    className="my-2 flex items-center justify-between"
-                    key={favItem.id}
-                  >
-                    {favItem.fav && (
-                      <>
-                        <span className="mr-2 text-sm">{favItem.name}</span>
-
-                        <span
-                          className="cursor-pointer"
-                          onClick={() =>
-                            dispatch({
-                              type: "REMOVE_FAVORITE",
-                              payload: favItem,
-                            })
-                          }
-                        >
-                          <CloseCircle size="16" color="#FF4423" />
-                        </span>
-                      </>
-                    )}
-                  </p>
-                ))}
-              </div>
             )}
           </span>
         </div>
